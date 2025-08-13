@@ -1,0 +1,528 @@
+/*!
+ * TV Navigation Framework CSS v1.0.0
+ * https://github.com/cmrodican/bootstrap-addons/tv-navigation-framework
+ * Licensed under GNU GPL 2.0 License
+ * Compatible with Bootstrap 5.3+ and Bootswatch themes
+ */
+
+:root {
+  --tv-nav-primary: #007bff;
+  --tv-nav-secondary: #6c757d;
+  --tv-nav-success: #28a745;
+  --tv-nav-danger: #dc3545;
+  --tv-nav-warning: #ffc107;
+  --tv-nav-info: #17a2b8;
+  --tv-nav-light: #f8f9fa;
+  --tv-nav-dark: #343a40;
+  
+  --tv-nav-focus-color: var(--tv-nav-primary);
+  --tv-nav-focus-glow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+  --tv-nav-focus-scale: 1.05;
+  --tv-nav-border-radius: 8px;
+  --tv-nav-transition: all 0.2s ease-in-out;
+}
+
+/* CSS Variables for easy theme customization */
+[data-bs-theme="dark"] {
+  --tv-nav-primary: #0d6efd;
+  --tv-nav-focus-color: #0d6efd;
+  --tv-nav-focus-glow: 0 0 0 3px rgba(13, 110, 253, 0.5);
+}
+
+/* TV-friendly base styles */
+* {
+  box-sizing: border-box;
+}
+
+body.tv-nav-enabled {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Focusable elements core styling */
+.tv-nav-focusable {
+  position: relative;
+  border: 2px solid transparent !important;
+  border-radius: var(--tv-nav-border-radius);
+  transition: var(--tv-nav-transition);
+  cursor: pointer;
+  outline: none !important;
+}
+
+.tv-nav-focusable:focus,
+.tv-nav-focused {
+  border-color: var(--tv-nav-focus-color) !important;
+  box-shadow: var(--tv-nav-focus-glow) !important;
+  transform: scale(var(--tv-nav-focus-scale));
+  z-index: 10;
+  outline: none !important;
+}
+
+/* Button enhancements */
+.btn.tv-nav-focusable {
+  min-height: 48px;
+  padding: 12px 24px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-group .btn.tv-nav-focusable:focus,
+.btn-group .btn.tv-nav-focused {
+  z-index: 11;
+}
+
+/* Card enhancements */
+.card.tv-nav-focusable {
+  transition: var(--tv-nav-transition);
+  cursor: pointer;
+}
+
+.card.tv-nav-focusable:focus,
+.card.tv-nav-focused {
+  transform: scale(1.02);
+}
+
+/* Form control enhancements */
+.form-control.tv-nav-focusable,
+.form-select.tv-nav-focusable {
+  min-height: 48px;
+  font-size: 1.1rem;
+}
+
+/* Navigation breadcrumb */
+.tv-nav-breadcrumb {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px 20px;
+  border-radius: var(--tv-nav-border-radius);
+  font-size: 0.9rem;
+  z-index: 1000;
+  transition: var(--tv-nav-transition);
+  backdrop-filter: blur(10px);
+}
+
+/* Status indicator */
+.tv-nav-status {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--tv-nav-success);
+  color: white;
+  padding: 8px 16px;
+  border-radius: var(--tv-nav-border-radius);
+  font-size: 0.8rem;
+  z-index: 1000;
+  transition: var(--tv-nav-transition);
+  backdrop-filter: blur(10px);
+}
+
+.tv-nav-status.error {
+  background: var(--tv-nav-danger);
+}
+
+.tv-nav-status.warning {
+  background: var(--tv-nav-warning);
+  color: black;
+}
+
+.tv-nav-status.info {
+  background: var(--tv-nav-info);
+}
+
+/* Loading overlay */
+.tv-nav-loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--tv-nav-transition);
+  backdrop-filter: blur(5px);
+}
+
+.tv-nav-loading.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.tv-nav-spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid white;
+  border-radius: 50%;
+  animation: tv-nav-spin 1s linear infinite;
+}
+
+@keyframes tv-nav-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* On-screen keyboard */
+.tv-nav-keyboard {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  padding: 20px;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 2000;
+  border-top: 3px solid var(--tv-nav-primary);
+  backdrop-filter: blur(10px);
+}
+
+.tv-nav-keyboard.active {
+  transform: translateY(0);
+}
+
+.tv-nav-keyboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.tv-nav-keyboard-input {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.2rem;
+  border: 2px solid var(--tv-nav-primary);
+  border-radius: var(--tv-nav-border-radius);
+  background: white;
+  margin-bottom: 20px;
+}
+
+.tv-nav-keyboard-row {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.tv-nav-key {
+  background: #444;
+  color: white;
+  border: 2px solid transparent;
+  border-radius: var(--tv-nav-border-radius);
+  padding: 12px 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--tv-nav-transition);
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.tv-nav-key:hover,
+.tv-nav-key:focus,
+.tv-nav-key.tv-nav-focused {
+  background: var(--tv-nav-primary);
+  border-color: white;
+  transform: scale(1.1);
+  outline: none;
+}
+
+.tv-nav-key.space {
+  grid-column: span 4;
+}
+
+.tv-nav-key.backspace,
+.tv-nav-key.enter {
+  grid-column: span 2;
+}
+
+.tv-nav-key.shift,
+.tv-nav-key.caps {
+  grid-column: span 1;
+}
+
+.tv-nav-key.special {
+  background: #666;
+  font-size: 0.9rem;
+}
+
+.tv-nav-key.special:hover,
+.tv-nav-key.special:focus,
+.tv-nav-key.special.tv-nav-focused {
+  background: var(--tv-nav-secondary);
+}
+
+.tv-nav-key.active {
+  background: var(--tv-nav-warning) !important;
+  color: black !important;
+}
+
+/* Help overlay */
+.tv-nav-help {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--tv-nav-transition);
+  backdrop-filter: blur(5px);
+}
+
+.tv-nav-help.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.tv-nav-help-content {
+  background: white;
+  padding: 40px;
+  border-radius: var(--tv-nav-border-radius);
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.tv-nav-help-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: var(--tv-nav-primary);
+}
+
+.tv-nav-help-section {
+  margin-bottom: 20px;
+}
+
+.tv-nav-help-section h4 {
+  color: var(--tv-nav-secondary);
+  margin-bottom: 10px;
+}
+
+.tv-nav-help-key {
+  display: inline-block;
+  background: var(--tv-nav-dark);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.9rem;
+  margin-right: 5px;
+}
+
+/* Toast notifications */
+.tv-nav-toast {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 20px 30px;
+  border-radius: var(--tv-nav-border-radius);
+  z-index: 4000;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--tv-nav-transition);
+  backdrop-filter: blur(10px);
+}
+
+.tv-nav-toast.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Animations */
+@keyframes tv-nav-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.tv-nav-pulse {
+  animation: tv-nav-pulse 1s ease-in-out infinite;
+}
+
+@keyframes tv-nav-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.tv-nav-shake {
+  animation: tv-nav-shake 0.5s ease-in-out;
+}
+
+@keyframes tv-nav-bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+
+.tv-nav-bounce {
+  animation: tv-nav-bounce 0.6s ease-in-out;
+}
+
+/* Focus indicators for different element types */
+a.tv-nav-focusable:focus,
+a.tv-nav-focused {
+  text-decoration: none;
+}
+
+.list-group-item.tv-nav-focusable:focus,
+.list-group-item.tv-nav-focused {
+  background-color: var(--tv-nav-primary);
+  color: white;
+}
+
+.nav-link.tv-nav-focusable:focus,
+.nav-link.tv-nav-focused {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Dropdown menu support */
+.dropdown-menu .tv-nav-focusable:focus,
+.dropdown-menu .tv-nav-focused {
+  background-color: var(--tv-nav-primary) !important;
+  color: white !important;
+}
+
+/* Modal support */
+.modal.show .modal-dialog {
+  transform: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  body.tv-nav-enabled {
+    font-size: 1.1rem;
+  }
+  
+  .tv-nav-keyboard-row {
+    grid-template-columns: repeat(8, 1fr);
+  }
+  
+  .tv-nav-key.space {
+    grid-column: span 3;
+  }
+  
+  .tv-nav-breadcrumb,
+  .tv-nav-status {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    margin-bottom: 10px;
+    display: inline-block;
+  }
+}
+
+@media (max-width: 576px) {
+  .tv-nav-help-content {
+    padding: 20px;
+    margin: 20px;
+  }
+  
+  .btn.tv-nav-focusable {
+    min-height: 44px;
+    padding: 10px 20px;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .tv-nav-focusable:focus,
+  .tv-nav-focused {
+    border-width: 4px !important;
+    box-shadow: none !important;
+  }
+  
+  .tv-nav-keyboard {
+    border-top-width: 5px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .tv-nav-focusable:focus,
+  .tv-nav-focused {
+    transform: none !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .tv-nav-keyboard,
+  .tv-nav-help,
+  .tv-nav-breadcrumb,
+  .tv-nav-status,
+  .tv-nav-loading,
+  .tv-nav-toast {
+    display: none !important;
+  }
+  
+  .tv-nav-focusable {
+    border: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+}
+
+/* Screen reader support */
+.sr-only {
+	position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Custom scrollbar for webkit browsers */
+.tv-nav-help-content::-webkit-scrollbar {
+	width: 8px;
+}
+
+.tv-nav-help-content::-webkit-scrollbar-track {
+	background: #f1f1f1;
+	border-radius: 4px;
+}
+
+.tv-nav-help-content::-webkit-scrollbar-thumb {
+	background: var(--tv-nav-primary);
+	border-radius: 4px;
+}
+
+.tv-nav-help-content::-webkit-scrollbar-thumb:hover {
+  background: var(--tv-nav-secondary);
+}
