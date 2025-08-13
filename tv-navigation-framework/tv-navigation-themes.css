@@ -1,0 +1,518 @@
+/*!
+ * TV Navigation Framework - Theme Pack v1.0.0
+ * https://github.com/cmrodican/bootstrap-addons/tv-navigation-framework
+ * Licensed under GNU GPL 2.0 License
+ * Compatible with Bootstrap 5.3+ and Bootswatch themes
+ * Popular streaming service and gaming console themes
+ */
+
+/* =============================================================================
+   NETFLIX THEME
+   ============================================================================= */
+.tv-nav-theme-netflix {
+  --tv-nav-primary: #e50914;
+  --tv-nav-secondary: #221f1f;
+  --tv-nav-success: #46d369;
+  --tv-nav-danger: #e50914;
+  --tv-nav-warning: #f5c518;
+  --tv-nav-info: #54a3ff;
+  --tv-nav-light: #f5f5f1;
+  --tv-nav-dark: #141414;
+  
+  --tv-nav-focus-color: #e50914;
+  --tv-nav-focus-glow: 0 0 0 3px rgba(229, 9, 20, 0.6);
+  --tv-nav-focus-scale: 1.08;
+  --tv-nav-border-radius: 4px;
+  
+  background: #141414;
+  color: #ffffff;
+}
+
+.tv-nav-theme-netflix .tv-nav-breadcrumb {
+  background: rgba(229, 9, 20, 0.9);
+  backdrop-filter: blur(20px);
+}
+
+.tv-nav-theme-netflix .tv-nav-status {
+  background: rgba(229, 9, 20, 0.9);
+}
+
+.tv-nav-theme-netflix .tv-nav-keyboard {
+  background: rgba(20, 20, 20, 0.98);
+  border-top: 4px solid #e50914;
+}
+
+.tv-nav-theme-netflix .tv-nav-key {
+  background: #333333;
+  border: 2px solid transparent;
+}
+
+.tv-nav-theme-netflix .tv-nav-key:hover,
+.tv-nav-theme-netflix .tv-nav-key:focus,
+.tv-nav-theme-netflix .tv-nav-key.tv-nav-focused {
+  background: #e50914;
+  border-color: #ffffff;
+}
+
+/* Netflix-style cards with hover effects */
+.tv-nav-theme-netflix .card.tv-nav-focusable {
+  background: #2f2f2f;
+  border: none;
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.tv-nav-theme-netflix .card.tv-nav-focusable:hover,
+.tv-nav-theme-netflix .card.tv-nav-focused {
+  transform: scale(1.05) translateZ(0);
+  box-shadow: 0 10px 42px rgba(0, 0, 0, 0.8);
+  z-index: 10;
+}
+
+/* =============================================================================
+   AMAZON PRIME VIDEO THEME
+   ============================================================================= */
+.tv-nav-theme-prime {
+  --tv-nav-primary: #00a8e1;
+  --tv-nav-secondary: #232f3e;
+  --tv-nav-success: #067d62;
+  --tv-nav-danger: #d13212;
+  --tv-nav-warning: #f0c14b;
+  --tv-nav-info: #00a8e1;
+  --tv-nav-light: #f3f3f3;
+  --tv-nav-dark: #0f171e;
+  
+  --tv-nav-focus-color: #00a8e1;
+  --tv-nav-focus-glow: 0 0 0 3px rgba(0, 168, 225, 0.5);
+  --tv-nav-focus-scale: 1.06;
+  --tv-nav-border-radius: 3px;
+  
+  background: #0f171e;
+  color: #ffffff;
+}
+
+.tv-nav-theme-prime .tv-nav-breadcrumb {
+  background: rgba(0, 168, 225, 0.9);
+  backdrop-filter: blur(15px);
+}
+
+.tv-nav-theme-prime .tv-nav-focusable:focus,
+.tv-nav-theme-prime .tv-nav-focused {
+  border-color: #00a8e1;
+  box-shadow: 0 0 0 2px rgba(0, 168, 225, 0.3), 0 0 20px rgba(0, 168, 225, 0.2);
+}
+
+/* =============================================================================
+   DISNEY+ THEME
+   ============================================================================= */
+.tv-nav-theme-disney {
+  --tv-nav-primary: #0063e5;
+  --tv-nav-secondary: #1a1d29;
+  --tv-nav-success: #249689;
+  --tv-nav-danger: #f51832;
+  --tv-nav-warning: #ffc107;
+  --tv-nav-info: #0063e5;
+  --tv-nav-light: #f9f9f9;
+  --tv-nav-dark: #040714;
+  
+  --tv-nav-focus-color: #0063e5;
+  --tv-nav-focus-glow: 0 0 0 3px rgba(0, 99, 229, 0.5);
+  --tv-nav-focus-scale: 1.07;
+  --tv-nav-border-radius: 8px;
+  
+  background: linear-gradient(45deg, #040714 0%, #0c1426 100%);
+  color: #ffffff;
+}
+
+.tv-nav-theme-disney .tv-nav-breadcrumb {
+  background: rgba(0, 99, 229, 0.9);
+  border-radius: 20px;
+}
+
+.tv-nav-theme-disney .tv-nav-focusable:focus,
+.tv-nav-theme-disney .tv-nav-focused {
+  border-image: linear-gradient(45deg, #0063e5, #00d4ff) 1;
+  box-shadow: 0 0 30px rgba(0, 99, 229, 0.4);
+}
+
+/* =============================================================================
+   HULU THEME
+   ============================================================================= */
+.tv-nav-theme-hulu {
+  --tv-nav-primary: #1ce783;
+  --tv-nav-secondary: #0e0e0e;
+  --tv-nav-success: #1ce783;
+  --tv-nav-danger: #ff6b6b;
+  --tv-nav-warning: #feca57;
+  --tv-nav-info: #48dbfb;
+  --tv-nav-light: #f8f9fa;
+  --tv-nav-dark: #0e0e0e;
+  
+  --tv-nav-focus-color: #1ce783;
+  --tv-nav-focus-glow: 0 0 0 3px rgba(28, 231, 131, 0.5);
+  --tv-nav-focus-scale: 1.05;
+  --tv-nav-border-radius: 6px;
+  
+  background: #0e0e0e;
+  color: #ffffff;
+}
+
+/* =============================================================================
+   HBO MAX THEME
+   ============================================================================= */
+.tv-nav-theme-hbo {
+  --tv-nav-primary: #9d34da;
+  --tv-nav-secondary: #1a1a1a;
+  --tv-nav-success: #30d158;
+  --tv-nav-danger: #ff453a;
+  --tv-nav-warning: #ffd60a;
+  --tv-nav-info: #007aff;
+  --tv-nav-light: #f2f2f7;
+  --tv-nav-dark: #000000;
+  
+  --tv-nav-focus-color: #9d34da;
+  --tv-nav-focus-glow: 0 0 0 3px rgba(157, 52, 218, 0.5);
+  --tv-nav-focus-scale: 1.06;
+  --tv-nav-border-radius: 10px;
+  
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+  color: #ffffff;
+}
+
+/* =============================================================================
+   YOUTUBE THEME
+   ============================================================================= */
+.tv-nav-theme-youtube {
+  --tv-nav-primary: #ff0000;
+  --tv-nav-secondary: #212121;
+  --tv-nav-success: #00e676;
+  --tv-nav-danger: #ff1744;
+  --tv-nav-warning: #ffab00;
+  --tv-nav-info: #2196f3;
+  --tv-nav-light: #f9f9f9;
+  --tv-nav-dark: #0f0f0f;
+  
+  --tv-nav-focus-color: #ff0000;
+  --tv-nav-focus-glow: 0 0 0 3px rgba(255, 0, 0, 0.4);
+  --tv-nav-focus-scale: 1.04;
+  --tv-nav-border-radius: 12px;
+  
+  background: #0f0f0f;
+  color: #ffffff;
+}
+
+/* =============================================================================
+   GAMING CONSOLE THEMES
+   ============================================================================= */
+
+/* PlayStation Theme */
+.tv-nav-theme-playstation {
+  --tv-nav-primary: #0070d1;
+  --tv-nav-secondary: #363636;
+  --tv-nav-success: #00ff00;
+  --tv-nav-danger: #ff0040;
+  --tv-nav-warning: #ffc107;
+  --tv-nav-info: #00d4ff;
+  --tv-nav-light: #f5f5f5;
+  --tv-nav-dark: #1f1f1f;
+  
+  --tv-nav-focus-color: #0070d1;
+  --tv-nav-focus-glow: 0 0 0 4px rgba(0, 112, 209, 0.6);
+  --tv-nav-focus-scale: 1.08;
+  --tv-nav-border-radius: 4px;
+  
+  background: linear-gradient(45deg, #1f1f1f 0%, #363636 100%);
+  color: #ffffff;
+}
+
+.tv-nav-theme-playstation .tv-nav-focusable:focus,
+.tv-nav-theme-playstation .tv-nav-focused {
+  box-shadow: 0 0 0 4px rgba(0, 112, 209, 0.6), 0 0 20px rgba(0, 112, 209, 0.3);
+  border: 2px solid #ffffff;
+}
+
+/* Xbox Theme */
+.tv-nav-theme-xbox {
+  --tv-nav-primary: #107c10;
+  --tv-nav-secondary: #2d2d30;
+  --tv-nav-success: #107c10;
+  --tv-nav-danger: #d13438;
+  --tv-nav-warning: #ffb900;
+  --tv-nav-info: #0078d4;
+  --tv-nav-light: #f3f2f1;
+  --tv-nav-dark: #1e1e1e;
+  
+  --tv-nav-focus-color: #107c10;
+  --tv-nav-focus-glow: 0 0 0 3px rgba(16, 124, 16, 0.7);
+  --tv-nav-focus-scale: 1.07;
+  --tv-nav-border-radius: 2px;
+  
+  background: #1e1e1e;
+  color: #ffffff;
+}
+
+/* Nintendo Switch Theme */
+.tv-nav-theme-nintendo {
+  --tv-nav-primary: #e60012;
+  --tv-nav-secondary: #485fc7;
+  --tv-nav-success: #48c78e;
+  --tv-nav-danger: #f14668;
+  --tv-nav-warning: #ffe08a;
+  --tv-nav-info: #3e8ed0;
+  --tv-nav-light: #f5f5f5;
+  --tv-nav-dark: #0a0a0a;
+  
+  --tv-nav-focus-color: #e60012;
+  --tv-nav-focus-glow: 0 0 0 3px rgba(230, 0, 18, 0.5);
+  --tv-nav-focus-scale: 1.06;
+  --tv-nav-border-radius: 16px;
+  
+  background: linear-gradient(135deg, #0a0a0a 0%, #363636 100%);
+  color: #ffffff;
+}
+
+/* =============================================================================
+   SMART TV MANUFACTURER THEMES
+   ============================================================================= */
+
+/* Samsung Tizen Theme */
+.tv-nav-theme-samsung {
+  --tv-nav-primary: #1f7ce6;
+  --tv-nav-secondary: #2c2c2c;
+  --tv-nav-success: #36c5ab;
+  --tv-nav-danger: #ff4757;
+  --tv-nav-warning: #ffa502;
+  --tv-nav-info: #3742fa;
+  --tv-nav-light: #f1f2f6;
+  --tv-nav-dark: #1e1e1e;
+  
+  --tv-nav-focus-color: #1f7ce6;
+  --tv-nav-focus-glow: 0 0 0 3px rgba(31, 124, 230, 0.5);
+  --tv-nav-focus-scale: 1.05;
+  --tv-nav-border-radius: 8px;
+  
+  background: #1e1e1e;
+  color: #ffffff;
+}
+
+/* LG webOS Theme */
+.tv-nav-theme-lg {
+  --tv-nav-primary: #a50034;
+  --tv-nav-secondary: #3e3e3e;
+  --tv-nav-success: #00b894;
+  --tv-nav-danger: #e17055;
+  --tv-nav-warning: #fdcb6e;
+  --tv-nav-info: #74b9ff;
+  --tv-nav-light: #ddd;
+  --tv-nav-dark: #2d3436;
+  
+  --tv-nav-focus-color: #a50034;
+  --tv-nav-focus-glow: 0 0 0 3px rgba(165, 0, 52, 0.5);
+  --tv-nav-focus-scale: 1.06;
+  --tv-nav-border-radius: 12px;
+  
+  background: #2d3436;
+  color: #ffffff;
+}
+
+/* =============================================================================
+   RETRO/VINTAGE THEMES
+   ============================================================================= */
+
+/* Retro Gaming Theme */
+.tv-nav-theme-retro {
+  --tv-nav-primary: #ff6b35;
+  --tv-nav-secondary: #f7931e;
+  --tv-nav-success: #7bc043;
+  --tv-nav-danger: #e94b3c;
+  --tv-nav-warning: #f7931e;
+  --tv-nav-info: #29abe2;
+  --tv-nav-light: #f9f9f9;
+  --tv-nav-dark: #2c2c54;
+  
+  --tv-nav-focus-color: #ff6b35;
+  --tv-nav-focus-glow: 0 0 0 3px rgba(255, 107, 53, 0.7);
+  --tv-nav-focus-scale: 1.1;
+  --tv-nav-border-radius: 0px;
+  
+  background: #2c2c54;
+  color: #40407a;
+  font-family: 'Courier New', monospace;
+}
+
+.tv-nav-theme-retro .tv-nav-focusable:focus,
+.tv-nav-theme-retro .tv-nav-focused {
+  border: 4px solid #ff6b35;
+  box-shadow: 0 0 20px rgba(255, 107, 53, 0.6);
+  text-shadow: 0 0 10px rgba(255, 107, 53, 0.8);
+}
+
+/* 80s Neon Theme */
+.tv-nav-theme-neon {
+  --tv-nav-primary: #ff0080;
+  --tv-nav-secondary: #8000ff;
+  --tv-nav-success: #00ff80;
+  --tv-nav-danger: #ff4000;
+  --tv-nav-warning: #ffff00;
+  --tv-nav-info: #00ffff;
+  --tv-nav-light: #ffffff;
+  --tv-nav-dark: #000000;
+  
+  --tv-nav-focus-color: #ff0080;
+  --tv-nav-focus-glow: 0 0 20px #ff0080, 0 0 40px #ff0080, 0 0 60px #ff0080;
+  --tv-nav-focus-scale: 1.1;
+  --tv-nav-border-radius: 0px;
+  
+  background: #000000;
+  color: #ff0080;
+  font-family: 'Orbitron', 'Courier New', monospace;
+}
+
+.tv-nav-theme-neon .tv-nav-focusable:focus,
+.tv-nav-theme-neon .tv-nav-focused {
+  border: 2px solid #ff0080;
+  box-shadow: 0 0 20px #ff0080, 0 0 40px #ff0080, 0 0 60px #ff0080;
+  text-shadow: 0 0 10px #ff0080;
+  animation: tv-nav-neon-pulse 2s infinite;
+}
+
+@keyframes tv-nav-neon-pulse {
+  0%, 100% { text-shadow: 0 0 10px #ff0080; }
+  50% { text-shadow: 0 0 20px #ff0080, 0 0 30px #ff0080; }
+}
+
+/* =============================================================================
+   HIGH CONTRAST THEMES (ACCESSIBILITY)
+   ============================================================================= */
+
+/* High Contrast Light */
+.tv-nav-theme-contrast-light {
+  --tv-nav-primary: #000000;
+  --tv-nav-secondary: #666666;
+  --tv-nav-success: #006600;
+  --tv-nav-danger: #cc0000;
+  --tv-nav-warning: #996600;
+  --tv-nav-info: #000099;
+  --tv-nav-light: #ffffff;
+  --tv-nav-dark: #000000;
+  
+  --tv-nav-focus-color: #000000;
+  --tv-nav-focus-glow: none;
+  --tv-nav-focus-scale: 1;
+  --tv-nav-border-radius: 2px;
+  
+  background: #ffffff;
+  color: #000000;
+}
+
+.tv-nav-theme-contrast-light .tv-nav-focusable:focus,
+.tv-nav-theme-contrast-light .tv-nav-focused {
+  border: 4px solid #000000 !important;
+  box-shadow: none !important;
+  background: #ffff00 !important;
+  color: #000000 !important;
+}
+
+/* High Contrast Dark */
+.tv-nav-theme-contrast-dark {
+  --tv-nav-primary: #ffffff;
+  --tv-nav-secondary: #cccccc;
+  --tv-nav-success: #00ff00;
+  --tv-nav-danger: #ff0000;
+  --tv-nav-warning: #ffff00;
+  --tv-nav-info: #00ffff;
+  --tv-nav-light: #000000;
+  --tv-nav-dark: #ffffff;
+  
+  --tv-nav-focus-color: #ffffff;
+  --tv-nav-focus-glow: none;
+  --tv-nav-focus-scale: 1;
+  --tv-nav-border-radius: 2px;
+  
+  background: #000000;
+  color: #ffffff;
+}
+
+.tv-nav-theme-contrast-dark .tv-nav-focusable:focus,
+.tv-nav-theme-contrast-dark .tv-nav-focused {
+  border: 4px solid #ffffff !important;
+  box-shadow: none !important;
+  background: #ffff00 !important;
+  color: #000000 !important;
+}
+
+/* =============================================================================
+   THEME UTILITIES
+   ============================================================================= */
+
+/* Theme transition animations */
+.tv-nav-theme-transition {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Apply theme transitions to all themed elements */
+[class*="tv-nav-theme-"] {
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+[class*="tv-nav-theme-"] .tv-nav-focusable {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Theme-specific fonts */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+
+.tv-nav-theme-neon,
+.tv-nav-theme-retro {
+  font-family: 'Orbitron', 'Courier New', monospace;
+}
+
+/* Custom properties for theme switching */
+:root {
+  --tv-nav-theme-transition-duration: 0.5s;
+  --tv-nav-theme-transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* JavaScript theme switching helper classes */
+.tv-nav-theme-switching {
+  pointer-events: none;
+  transition: all var(--tv-nav-theme-transition-duration) var(--tv-nav-theme-transition-timing);
+}
+
+.tv-nav-theme-switching * {
+  transition: all var(--tv-nav-theme-transition-duration) var(--tv-nav-theme-transition-timing);
+}
+
+/* Media queries for theme preferences */
+@media (prefers-color-scheme: dark) {
+  .tv-nav-theme-auto {
+    --tv-nav-primary: #0d6efd;
+    --tv-nav-dark: #212529;
+    --tv-nav-light: #f8f9fa;
+    background: #212529;
+    color: #ffffff;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .tv-nav-theme-auto {
+    --tv-nav-primary: #0d6efd;
+    --tv-nav-dark: #212529;
+    --tv-nav-light: #f8f9fa;
+    background: #ffffff;
+    color: #212529;
+  }
+}
+
+/* Reduced motion support for all themes */
+@media (prefers-reduced-motion: reduce) {
+  [class*="tv-nav-theme-"] * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  [class*="tv-nav-theme-"] .tv-nav-focusable:focus,
+  [class*="tv-nav-theme-"] .tv-nav-focused {
+    transform: none !important;
+  }
+}
