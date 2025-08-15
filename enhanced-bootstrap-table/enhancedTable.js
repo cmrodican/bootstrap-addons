@@ -1,4 +1,9 @@
-        // Reusable Bootstrap Table Enhancer Library
+/*!
+ * Enhanced Bootstrap Table Addon JS v1.0.0
+ * https://github.com/cmrodican/bootstrap-addons/enhanced-bootstrap-table
+ * Licensed under GNU GPL 2.0 License
+ * Compatible with Bootstrap 5.3+ and Bootswatch themes
+ */
         class BootstrapTableEnhancer {
             constructor() {
                 this.tables = new Map();
