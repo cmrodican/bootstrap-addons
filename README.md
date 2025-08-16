@@ -17,7 +17,7 @@ A powerful, feature-rich enhancement for Bootstrap 5.3 tables that adds advanced
 ## 📝 License
 
 The Bootstrap Addons project is licensed under the terms of the [GNU General PublicLicense v2.0.  
-See the [LICENSE file](https://github.com/cmrodican/bootstrap-addons/license.txt) for details.
+See the [LICENSE file](https://github.com/cmrodican/bootstrap-addons/blob/main/license.txt) for details.
 
 
 
