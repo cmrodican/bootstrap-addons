@@ -1,5 +1,73 @@
 # bootstrap-addons
+
 A collection of projects to add new functionality and dynamic features to static Bootstrap websites.
+
+## Bootstrap Semantic Grid Addon (`semantic-grid.css`)
+
+This addon provides a simple, semantic approach to creating a full-page layout using CSS Grid. It is designed to complement Bootstrap's existing utility-first grid classes (.g-col-*) by focusing on the overall page structure using HTML5 semantic tags like `<header>`, `<main>`, and `<footer>`.
+
+### Features
+
+- **Semantic-First Layout: Uses grid-area to map semantic HTML tags to specific areas of the page.
+- **Responsive Design: Automatically stacks content on smaller screens for mobile-first compatibility.
+- **Easy Integration: A single CSS file that can be dropped into any static Bootstrap project.
+- **"Holy Grail" Layout: The default configuration provides a classic and flexible two-column layout with a header, navigation, and footer.
+
+### Usage
+
+1. **Include the CSS file** in the head of your your HTML after you call the bootstrap file:
+    ```html
+    <!-- Link Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/css/bootstrap.min.css" integrity="sha512-fw7f+TcMjTb7bpbLJZlP8g2Y4XcCyFZW8uy8HsRZsH/SwbMw0plKHFHr99DN3l04VsYNwvzicUX/6qurvIxbxw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- And then link this file -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cmrodican/bootstrap-addons/css-grid/semantic-grid.css" />
+    ```
+
+
+
+
+
+<!-- Your semantic grid addon CSS -->
+<link rel="stylesheet" href="path/to/bootstrap-semantic-grid.css">
+
+Step 2: Structure Your HTML
+Wrap your main page content in a parent container with the .grid-container class. Then, place your semantic HTML tags inside this container.
+
+<div class="grid-container">
+    <header>
+        <!-- Your header content -->
+        <h1>Site Title</h1>
+    </header>
+
+    <nav>
+        <!-- Your navigation links -->
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <main>
+        <!-- Main content of the page -->
+        <p>This is the main content area.</p>
+    </main>
+
+    <aside>
+        <!-- Sidebar content -->
+        <p>This is the sidebar area.</p>
+    </aside>
+
+    <footer>
+        <!-- Footer content -->
+        <p>&copy; 2024 Your Company</p>
+    </footer>
+</div>
+
+That's it! The CSS in the addon will automatically position these elements to create the responsive layout.
+
+Customization
+You can easily modify the layout to fit your needs by editing the CSS. For example, to change the column widths or the arrangement of the grid areas on desktop, you would edit the .grid-container block. You can also add more grid-area properties to new semantic tags if needed.
+
+
 
 ## CSS Grid (`bs-grid.css`)
 
@@ -18,6 +86,9 @@ This CSS file provides a responsive grid system inspired by Bootstrap's grid, bu
 
 1. **Include the CSS file** in your HTML:
     ```html
+    <!-- Link Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/css/bootstrap.min.css" integrity="sha512-fw7f+TcMjTb7bpbLJZlP8g2Y4XcCyFZW8uy8HsRZsH/SwbMw0plKHFHr99DN3l04VsYNwvzicUX/6qurvIxbxw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- And then link this file -->
     <link rel="stylesheet" href="bs-grid.css">
     ```
 
