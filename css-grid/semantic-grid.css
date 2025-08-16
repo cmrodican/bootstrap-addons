@@ -1,0 +1,80 @@
+/*
+ * Bootstrap Semantic Grid Addon CSS v1.0.0 * https://github.com/cmrodican/bootstrap-addons/css-grid
+ * Licensed under GNU GPL 2.0 License
+ * Compatible with Bootstrap 5.3+ and Bootswatch themes
+ * This file is for defining a semantic, top-level page layout
+ * using HTML tags like <header>, <main>, and <footer> with CSS Grid.
+ * This complements the utility classes (e.g., g-col-*) for
+ * building component-level layouts.
+ */
+
+/*
+ * The main container for the entire page grid.
+ * We use a class to allow for centering and consistent spacing.
+ */
+.grid-container {
+  display: grid;
+  gap: 1.5rem; /* Use a standard Bootstrap gap variable for consistency */
+  max-width: 1320px; /* Use a common Bootstrap max-width value */
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/*
+ * Desktop Layout (default)
+ * This layout is based on the popular "Holy Grail" design.
+ */
+.grid-container {
+  /* Define the layout using a visual map of named areas. */
+  grid-template-areas:
+    "header header"
+    "nav nav"
+    "main sidebar"
+    "footer footer";
+
+  /* Define the column widths. This creates a wider main column. */
+  grid-template-columns: 2fr 1fr;
+}
+
+/*
+ * Assigning each semantic HTML element to its named grid area.
+ * The `grid-area` property links the element to the name in `grid-template-areas`.
+ */
+header {
+  grid-area: header;
+}
+
+nav {
+  grid-area: nav;
+}
+
+main {
+  grid-area: main;
+}
+
+aside {
+  grid-area: sidebar;
+}
+
+footer {
+  grid-area: footer;
+}
+
+/*
+ * Mobile Responsiveness
+ * On smaller screens, the layout changes to a single-column stack.
+ */
+@media (max-width: 768px) {
+  .grid-container {
+    /* Redefine the grid areas to stack all elements vertically. */
+    grid-template-areas:
+      "header"
+      "nav"
+      "main"
+      "sidebar"
+      "footer";
+
+    /* Change to a single-column layout for mobile. */
+    grid-template-columns: 1fr;
+  }
+}

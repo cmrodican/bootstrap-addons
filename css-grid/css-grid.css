@@ -1,3 +1,10 @@
+/*!
+ * CSS Grid Bootstrap Addon CSS v1.0.0
+ * https://github.com/cmrodican/bootstrap-addons/css-grid
+ * Licensed under GNU GPL 2.0 License
+ * Compatible with Bootstrap 5.3+ and Bootswatch themes
+ */
+
 .grid {
   display: grid;
   grid-template-rows: repeat(var(--bs-rows, 1), 1fr);
