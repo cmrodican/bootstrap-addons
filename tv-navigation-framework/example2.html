@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV Navigation Framework - Test Page</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="tv-navigation-framework2.css" rel="stylesheet" />
+</head>
+<body class="tv-nav-enabled">
+
+    <!-- Status Indicator -->
+    <div class="tv-nav-status" id="status">Loading...</div>
+    
+    <!-- Debug Info -->
+    <div class="debug-info" id="debugInfo">
+        <div>Navigation: <span id="navStatus">Initializing...</span></div>
+        <div>Current Focus: <span id="currentFocus">None</span></div>
+        <div>Elements: <span id="elementCount">0</span></div>
+        <div>Keys: Use Arrow Keys to Navigate</div>
+    </div>
+
+    <div class="container-fluid">
+        
+        <!-- Header -->
+        <header class="test-section text-center">
+            <h1 class="display-4 mb-3">TV Navigation Test</h1>
+            <p class="lead">Use arrow keys to navigate, Enter to select, Escape to go back</p>
+            <div class="row">
+                <div class="col-md-4">
+                    <button class="btn btn-primary btn-lg tv-nav-focusable w-100" onclick="testToast('success')">
+                        Test Success
+                    </button>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-warning btn-lg tv-nav-focusable w-100" onclick="testToast('warning')">
+                        Test Warning
+                    </button>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-danger btn-lg tv-nav-focusable w-100" onclick="testToast('error')">
+                        Test Error
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation Test -->
+        <section class="test-section">
+            <h2>Directional Navigation Test</h2>
+            <p>Navigate between these buttons using arrow keys:</p>
+            <div class="control-grid">
+                <div></div>
+                <button class="btn btn-outline-primary tv-nav-focusable" onclick="showMessage('Up button clicked')">↑ Up</button>
+                <div></div>
+                <button class="btn btn-outline-primary tv-nav-focusable" onclick="showMessage('Left button clicked')">← Left</button>
+                <button class="btn btn-primary tv-nav-focusable" onclick="showMessage('Center button clicked')">⚪ Center</button>
+                <button class="btn btn-outline-primary tv-nav-focusable" onclick="showMessage('Right button clicked')">Right →</button>
+                <div></div>
+                <button class="btn btn-outline-primary tv-nav-focusable" onclick="showMessage('Down button clicked')">↓ Down</button>
+                <div></div>
+            </div>
+        </section>
+
+        <!-- Cards Test -->
+        <section class="test-section">
+            <h2>Card Navigation Test</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card tv-nav-focusable h-100" onclick="showMessage('Card 1 selected')">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Card 1</h5>
+                            <p class="card-text">This is the first test card</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card tv-nav-focusable h-100" onclick="showMessage('Card 2 selected')">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Card 2</h5>
+                            <p class="card-text">This is the second test card</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card tv-nav-focusable h-100" onclick="showMessage('Card 3 selected')">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Card 3</h5>
+                            <p class="card-text">This is the third test card</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Form Test -->
+        <section class="test-section">
+            <h2>Form Navigation Test</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <form>
+                        <div class="mb-3">
+                            <label for="testInput1" class="form-label">Test Input 1</label>
+                            <input type="text" class="form-control tv-nav-focusable" id="testInput1" placeholder="Type here...">
+                        </div>
+                        <div class="mb-3">
+                            <label for="testSelect" class="form-label">Test Select</label>
+                            <select class="form-select tv-nav-focusable" id="testSelect">
+                                <option>Option 1</option>
+                                <option>Option 2</option>
+                                <option>Option 3</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="testTextarea" class="form-label">Test Textarea</label>
+                            <textarea class="form-control tv-nav-focusable" id="testTextarea" rows="3" placeholder="Type here..."></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-check mb-2">
+                        <input class="form-check-input tv-nav-focusable" type="checkbox" id="check1">
+                        <label class="form-check-label" for="check1">Checkbox 1</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input tv-nav-focusable" type="checkbox" id="check2">
+                        <label class="form-check-label" for="check2">Checkbox 2</label>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input class="form-check-input tv-nav-focusable" type="radio" name="radio" id="radio1">
+                        <label class="form-check-label" for="radio1">Radio 1</label>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input class="form-check-input tv-nav-focusable" type="radio" name="radio" id="radio2">
+                        <label class="form-check-label" for="radio2">Radio 2</label>
+                    </div>
+                    <button class="btn btn-success tv-nav-focusable" onclick="showMessage('Form submitted!')">Submit</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Media Grid Test -->
+        <section class="test-section">
+            <h2>Media Grid Navigation</h2>
+            <div class="media-grid">
+                <div class="card tv-nav-focusable" onclick="showMessage('Media 1 selected')">
+                    <div class="media-item">Media 1</div>
+                </div>
+                <div class="card tv-nav-focusable" onclick="showMessage('Media 2 selected')">
+                    <div class="media-item">Media 2</div>
+                </div>
+                <div class="card tv-nav-focusable" onclick="showMessage('Media 3 selected')">
+                    <div class="media-item">Media 3</div>
+                </div>
+                <div class="card tv-nav-focusable" onclick="showMessage('Media 4 selected')">
+                    <div class="media-item">Media 4</div>
+                </div>
+                <div class="card tv-nav-focusable" onclick="showMessage('Media 5 selected')">
+                    <div class="media-item">Media 5</div>
+                </div>
+                <div class="card tv-nav-focusable" onclick="showMessage('Media 6 selected')">
+                    <div class="media-item">Media 6</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- List Navigation Test -->
+        <section class="test-section">
+            <h2>List Navigation Test</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <ul class="list-group">
+                        <li class="list-group-item tv-nav-focusable" onclick="showMessage('List item 1')">List Item 1</li>
+                        <li class="list-group-item tv-nav-focusable" onclick="showMessage('List item 2')">List Item 2</li>
+                        <li class="list-group-item tv-nav-focusable" onclick="showMessage('List item 3')">List Item 3</li>
+                        <li class="list-group-item tv-nav-focusable" onclick="showMessage('List item 4')">List Item 4</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <div class="btn-group-vertical w-100" role="group">
+                        <button class="btn btn-outline-secondary tv-nav-focusable" onclick="showMessage('Button 1')">Button 1</button>
+                        <button class="btn btn-outline-secondary tv-nav-focusable" onclick="showMessage('Button 2')">Button 2</button>
+                        <button class="btn btn-outline-secondary tv-nav-focusable" onclick="showMessage('Button 3')">Button 3</button>
+                        <button class="btn btn-outline-secondary tv-nav-focusable" onclick="showMessage('Button 4')">Button 4</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Control Buttons -->
+        <section class="test-section">
+            <h2>Framework Controls</h2>
+            <div class="row">
+                <div class="col-md-3">
+                    <button class="btn btn-info w-100 tv-nav-focusable" onclick="focusFirst()">Focus First</button>
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-secondary w-100 tv-nav-focusable" onclick="showDebugInfo()">Debug Info</button>
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-warning w-100 tv-nav-focusable" onclick="resetNavigation()">Reset Nav</button>
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-outline-primary w-100 tv-nav-focusable" onclick="toggleTheme()">Toggle Theme</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="tv-navigation-framework2.js"></script>
+</body>
+</html>
