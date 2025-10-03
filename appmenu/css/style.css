@@ -1,0 +1,46 @@
+/*!
+ * Bootstrap Appmenu Addon CSS v1.0.0
+ * https://github.com/cmrodican/bootstrap-addons/appmenu
+ * Licensed under GNU GPL 2.0 License
+ * Compatible with Bootstrap 5.3+ and Bootswatch themes
+ */
+
+        .menubar .nav-link {
+            cursor: default;
+        }
+        
+        .menubar .nav-link::first-letter {
+            text-decoration: underline;
+        }
+        
+        .menubar .dropdown-item {
+            width: 300px !important;
+        }
+        .menubar .dropdown-item:hover, .dropdown-item:focus {
+            color: var(--bs-dropdown-link-active-color);
+            text-decoration: none;
+            background-color: var(--bs-dropdown-link-active-bg);
+            cursor: default;
+        }
+        .menubar .dropdown-item.active, .dropdown-item:active {
+            color: var(--bs-dropdown-link-active-color);
+            text-decoration: none;
+            background-color: var(--bs-dropdown-link-active-bg);
+            cursor: default;
+        }
+        .menubar .dropdown-toggle::after {
+            content: none;
+        }
+        
+        .menubar .dropdown-item {
+            width: 300px !important;
+            margin-top: 0 !important;
+        }
+        
+        .menubar .nav-link {
+            cursor: default;
+        }
+        
+        .menubar .nav-link::first-letter {
+            text-decoration: underline;
+        }
