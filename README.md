@@ -2,6 +2,8 @@
 
 A collection of projects to add new functionality and dynamic features to static Bootstrap websites.
 
+This project is in no way affiliated with Bootstrap, which can be found at `https://github.com/twbs/bootstrap` or `https://getbootstrap.com`.
+
 ## Grid
 
 ### Semantic Grid
