@@ -1,5 +1,5 @@
 # Grid
-This addon contains two CSS files, which may be used together or separately to add additional functionality to a bootstrap project: `CSS-grid.css` and `semantic-grid.css`.
+This addon contains two CSS files, which may be used together or separately to add additional functionality to a bootstrap project: `CSS-grid.css` and `semantic-grid.css`.  This project is in no way affiliated with [https://github.com/twbs/bootstrap](Bootstrap). `https://github.com/twbs/bootstrap` | `https://getbootstrap.com`
 
 ## CSS Grid (`bs-grid.css`)
 
