@@ -1,46 +1,1638 @@
-/*!
- * Bootstrap Appmenu Addon CSS v1.0.0
- * https://github.com/cmrodican/bootstrap-addons/appmenu
- * Licensed under GNU GPL 2.0 License
- * Compatible with Bootstrap 5.3+ and Bootswatch themes
- */
+:root {
+        font-family: "Oxygen", sans-serif;
+      }
 
-        .menubar .nav-link {
-            cursor: default;
+body {
+        font-family: "Oxygen", sans-serif;
+        background-color: #f8f9fa;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Lora", serif;
+        font-weight: 700;
+        color: #55298a;
+      }
+
+      .header-section {
+        background: linear-gradient(135deg, #55298a 0%, #20cb98 100%);
+        color: white;
+        padding: 2rem 0;
+      }
+
+      .header-section h1 {
+        color: white;
+      }
+
+      .search-controls {
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin: -3rem 0 5rem 0;
+        position: relative;
+        z-index: 10;
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px !important;
+
+
+        @media (max-width: 768px) {
+          margin: -0.5rem 0 1rem 0;
+          padding: 1rem;
+
+          .row.g-3 .col-md-3 {
+            margin-bottom: 1rem;
+          }
         }
-        
-        .menubar .nav-link::first-letter {
-            text-decoration: underline;
+      }
+
+      .table-container {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      .table {
+        font-size: 10pt;
+        width: 100%;
+      }
+
+      .table thead th {
+        background-color: #55298a;
+        color: white;
+        border: none;
+        font-weight: 600;
+        padding: 0.75rem 0.5rem;
+        cursor: pointer;
+        user-select: none;
+        transition: background-color 0.2s;
+        position: relative;
+        vertical-align: middle;
+        min-width: 80px;
+        border-right: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .table thead th:hover {
+        background-color: #6d3ba0;
+      }
+
+      .table thead th.sortable::after {
+        content: " â†•";
+        opacity: 0.5;
+        float: right;
+        margin-left: 0.5rem;
+      }
+
+      .table thead th.sort-asc::after {
+        content: " â†‘";
+        opacity: 1;
+      }
+
+      .table thead th.sort-desc::after {
+        content: " â†“";
+        opacity: 1;
+      }
+
+      .resize-handle {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 8px;
+        cursor: col-resize;
+        z-index: 20;
+        background: transparent;
+        border-right: 2px solid transparent;
+      }
+
+      .resize-handle:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-right: 2px solid rgba(255, 255, 255, 0.5);
+      }
+
+      .table tbody tr {
+        transition: background-color 0.2s;
+        height: 30px;
+      }
+
+      .table tbody td {
+        height: 30px;
+        padding: 0.25rem 0.5rem;
+        vertical-align: middle;
+        line-height: 1.2;
+        font-size: 0.875rem;
+
+        @media (max-width: 768px) {
+          font-size: 0.75rem;
+          padding: 0.2rem 0.3rem;
         }
-        
-        .menubar .dropdown-item {
-            width: 300px !important;
+      }
+
+      .table tbody tr:hover {
+        background-color: #f8f9fa;
+      }
+
+      .table-responsive {
+        @media (max-width: 768px) {
+          font-size: 0.75rem;
         }
-        .menubar .dropdown-item:hover, .dropdown-item:focus {
-            color: var(--bs-dropdown-link-active-color);
-            text-decoration: none;
-            background-color: var(--bs-dropdown-link-active-bg);
-            cursor: default;
+      }
+
+      /* Dropdown Filter Styles */
+      .filter-dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        border: 1px solid #ddd;
+        border-top: none;
+        max-height: 250px;
+        overflow-y: auto;
+        z-index: 1000;
+        display: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .filter-dropdown.show {
+        display: block;
+      }
+
+      .filter-option {
+        padding: 0.5rem;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+
+      .filter-option:hover {
+        background-color: #f8f9fa;
+      }
+
+      .filter-option:last-child {
+        border-bottom: none;
+      }
+
+      .filter-option input[type="checkbox"] {
+        margin: 0;
+      }
+
+      .filter-option label {
+        margin: 0;
+        cursor: pointer;
+        flex: 1;
+        font-size: 0.875rem;
+        color: black;
+      }
+
+      .filter-header {
+        position: relative;
+      }
+
+      .filter-indicator {
+        position: absolute;
+        top: 2px;
+        right: 2px;
+        width: 8px;
+        height: 8px;
+        background-color: #20cb98;
+        border-radius: 50%;
+        display: none;
+      }
+
+      .filter-indicator.active {
+        display: block;
+      }
+
+      .badge {
+        margin: 0.125rem;
+        font-size: 0.7em;
+        padding: 0.35rem 0.5rem;
+      }
+
+      .badge-county {
+        background-color: #f5ebf3;
+        color: black;
+      }
+
+      .badge-resource-type {
+        background-color: #f5ebf3;
+        color: black;
+      }
+
+      .badge-category {
+        background-color: #f5ebf3;
+        color: black;
+      }
+
+      .badge-population {
+        background-color: #f5ebf3;
+        color: black;
+      }
+
+      .btn-primary {
+        background-color: #55298a;
+        border-color: #55298a;
+        color: #fff;
+      }
+
+      .btn-primary:hover {
+        background-color: #f5ebf3;
+        border-color: #f5ebf3;
+        color: #55298a;
+      }
+
+      .input-group {
+        background-color: ghostwhite;
+        border: 1px solid #55298a;
+      }
+      .input-group:focus {
+        border-color: #55298a;
+        box-shadow: 0 0 0 0.2rem rgba(85, 41, 138, 0.25);
+      }
+
+        /* Search Controls */
+        .search-controls {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin: -2rem auto 2rem;
+            position: relative;
+            z-index: 100;
         }
-        .menubar .dropdown-item.active, .dropdown-item:active {
-            color: var(--bs-dropdown-link-active-color);
-            text-decoration: none;
-            background-color: var(--bs-dropdown-link-active-bg);
-            cursor: default;
+
+        .filter-dropdown-btn {
+            position: relative;
+            width: 100%;
+            text-align: left;
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s;
         }
-        .menubar .dropdown-toggle::after {
-            content: none;
+
+        .filter-dropdown-btn:hover {
+            border-color: var(--secondary-color);
         }
-        
-        .menubar .dropdown-item {
-            width: 300px !important;
-            margin-top: 0 !important;
+
+        .filter-count-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            display: none;
         }
-        
-        .menubar .nav-link {
-            cursor: default;
+
+        .dropdown-menu-custom {
+            max-height: 300px;
+            overflow-y: auto;
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
-        
-        .menubar .nav-link::first-letter {
-            text-decoration: underline;
+
+        .dropdown-item-check {
+            padding: 0.5rem;
         }
+
+        .dropdown-item-check:hover {
+            background-color: #f8f9fa;
+        }
+
+        .dropdown-item-check input[type="checkbox"] {
+            margin-right: 0.5rem;
+        }
+
+
+      .form-control:focus {
+        background-color: inherit;
+        /* Inherit the background from the parent */
+        color: #685e92;
+        /* Inherit the font color from the parent */
+        border-color: none;
+        /* Inherit the border color from the parent */
+        box-shadow: none;
+        /* Remove the default box-shadow */
+        font-weight: 700;
+      }
+
+      .form-control::placeholder {
+        color: #685e92;
+        font-weight: 700;
+      }
+      .form-select:focus {
+        border-color: #55298a;
+        box-shadow: 0 0 0 0.2rem rgba(85, 41, 138, 0.25);
+      }
+      #searchbar:focus-within .btn {
+        background-color: #55298a !important;
+        /* Primary blue background for button */
+        color: #ffffff;
+        /* White text for button */
+      }
+
+      #searchbar:focus-within span {
+        color: transparent;
+      }
+      #searchbar:focus-within {
+        box-shadow: 0 0 0 0.4rem #7fffd4;
+        /* Bootstrap-like focus shadow */
+      }
+
+      #searchbar .form-control:focus {
+        background-color: inherit;
+        /* Inherit the background from the parent */
+        color: #685e92;
+        /* Inherit the font color from the parent */
+        border-color: none;
+        /* Inherit the border color from the parent */
+        box-shadow: none;
+        /* Remove the default box-shadow */
+        font-weight: 700;
+      }
+
+      .loading-spinner {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        padding: 3rem;
+      }
+
+      .spinner-border {
+        color: #55298a;
+      }
+
+      .results-info {
+        color: #6c757d;
+        font-size: 0.9em;
+        margin-bottom: 1rem;
+      }
+
+      .pagination {
+        --bs-pagination-active-bg: #55298a;
+        --bs-pagination-active-border-color: #55298a;
+      }
+
+      .btn-link {
+        color: #55298a;
+        text-decoration: none;
+      }
+
+      .btn-link:hover {
+        color: #f5ebf3;
+      }
+
+      .filter-chip {
+        background-color: #e9ecef;
+        color: #495057;
+        border-radius: 20px;
+        padding: 0.25rem 0.75rem;
+        margin: 0.125rem;
+        font-size: 0.875em;
+        display: inline-block;
+      }
+
+      .filter-chip .btn-close {
+        font-size: 0.75em;
+        margin-left: 0.5rem;
+      }
+
+      /* New Filter Controls Styles */
+      .filter-count-badge {
+        position: absolute;
+        top: -5px;
+        right: 8px;
+        background-color: #55298a;
+        color: white;
+        border-radius: 50%;
+        width: 18px;
+        height: 18px;
+        font-size: 0.7rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+
+        @media (max-width: 768px) {
+          right: 5px;
+          top: -3px;
+          width: 16px;
+          height: 16px;
+          font-size: 0.6rem;
+        }
+      }
+
+      .dropdown-menu {
+        max-height: 300px;
+        overflow-y: auto;
+      }
+
+      .dropdown-item-check {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+      }
+
+      .dropdown-item-check:hover {
+        background-color: #f8f9fa;
+      }
+
+      .dropdown-item-check input[type="checkbox"] {
+        margin: 0;
+        transform: scale(1.1);
+      }
+
+      .dropdown-item-check label {
+        margin: 0;
+        cursor: pointer;
+        flex: 1;
+        font-size: 0.875rem;
+        user-select: none;
+      }
+
+      .dropdown-toggle {
+        text-align: left;
+      }
+
+      .dropdown-toggle::after {
+        float: right;
+        margin-top: 0.5rem;
+      }
+
+      .location-image {
+        height: 25px;
+        width: auto;
+        margin-right: 0.5rem;
+        border-radius: 3px;
+      }
+
+      .location-name-cell {
+        display: flex;
+        align-items: center;
+      }
+
+      /* Map Styles */
+      .map-container {
+        background: white;
+        overflow: hidden;
+        margin-bottom: 2rem;
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px !important;
+      }
+
+      #mapContainer {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+
+      #map {
+        width: 100%;
+        height: 100%;
+      }
+
+      .map-popup-container {
+        font-family: "Oxygen", sans-serif;
+      }
+
+      .map-popup-container h3 {
+        color: #55298a !important;
+        font-size: 1rem;
+        margin-bottom: 0.25rem;
+      }
+
+      .map-popup-container h5 {
+        font-size: 0.875rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .map-popup-container p {
+        font-size: 0.75rem;
+      }
+
+      .map-popup-container a {
+        font-size: 0.75rem;
+      }
+
+      .maplibregl-ctrl,
+      .maplibregl-ctrl button,
+      .maplibregl-ctrl-compass,
+      .maplibregl-marker {
+        cursor: pointer;
+      }
+
+      /* View Toggle Styles */
+      .view-toggle {
+        display: flex;
+        border: 1px solid #55298a;
+        border-radius: 6px;
+        overflow: hidden;
+        flex-wrap: nowrap;
+      }
+
+      .view-toggle-btn {
+        padding: 0.25rem 0.5rem;
+        background: white;
+        color: #55298a;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+
+        @media (width > 768px) {
+          font-size: 12px;          
+        }
+      }
+
+      .view-toggle-btn:hover {
+        background-color: #f8f9fa;
+      }
+
+      .view-toggle-btn.active {
+        background-color: #55298a;
+        color: white;
+        border-radius: 0 5px 5px 0px !important;
+      }
+
+      .view-toggle-btn:not(:last-child) {
+        border-right: 1px solid #55298a;
+        border-radius: 5px 0 0 5px !important;
+      }
+
+      .resourceCard {
+        border: 1px solid #d5d6d8;
+        background-color: white;
+        border-radius: 1px;
+        box-shadow: 0 4px 13px rgba(84, 41, 137, .1);
+        margin-bottom: 1.5rem;
+        transition: all .4s ease;
+
+        @media (max-width: 768px) {
+          .card-sidenav {
+            min-height: 120px;
+          }
+        }
+      }
+
+      .resourceCard:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 13px rgba(84, 41, 137, .25);
+        border: 1px solid #55298a;
+      }
+
+      .resourceCard[data-longitude]:hover .card-body::after {
+        content: "ðŸ’¡ Click map icon to view location";
+        position: absolute;
+        bottom: 10px;
+        left: 20px;
+        background: rgba(85, 41, 138, 0.9);
+        color: white;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        pointer-events: none;
+        z-index: 10;
+      }
+
+      .card-body {
+        position: relative;
+      }
+
+      .card-sidenav {
+        background: #55298a;
+        border-radius: 1px 0 0 1px;
+        min-height: 200px;
+
+      }
+
+      .sidenav-button {
+        color: white;
+        text-decoration: none;
+        transition: background-color 0.2s;
+        border-radius: 0;
+        font-size: 1.75rem;
+        padding: 0.5rem;
+      }
+
+      .card-sidenav a {
+        color: white;
+        text-decoration: none;
+        transition: background-color 0.2s;
+        border-radius: 0;
+        font-size: 1.75rem;
+        padding: 0.5rem;
+      }
+
+      .card-sidenav > button {
+        color: white;
+        text-decoration: none;
+        transition: background-color 0.2s;
+        border-radius: 0;
+      }
+
+      .card-sidenav a:hover {
+        background-color: #f5ebf3;
+        color: #55298a;
+      }
+
+      .card-sidenav a:first-child {
+        border-radius: 1px 0 0 0;
+      }
+
+      .card-sidenav a:last-child {
+        border-radius: 0 0 0 1px;
+      }
+
+      .map-fly-btn {
+        background: transparent;
+        color: white;
+        text-decoration: none;
+        transition: background-color 0.2s;
+        border-radius: 0;
+        cursor: pointer;
+        font-size: 1.75rem;
+      }
+
+      .map-fly-btn:hover:not(:disabled) {
+        background-color: #f5ebf3;
+        color: #55298a;
+      }
+
+      .map-fly-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      .map-fly-btn:last-child {
+        border-radius: 0 0 0 1px;
+      }
+
+      .card-sidenav > i {
+        font-size: 48px;
+      }
+
+      .table-row-clickable {
+        position: relative;
+      }
+
+      .table-row-clickable:hover {
+        cursor: pointer;
+      }
+
+      .table-row-clickable[data-longitude]:hover::after {
+        content: "Click to view on map";
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(85, 41, 138, 0.9);
+        color: white;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-size: 0.75rem;
+        pointer-events: none;
+        z-index: 10;
+      }
+
+      .cardImage {
+          max-height: 100px;
+          height: 100px;
+          width: auto; /* Ensure width scales with height */
+          max-width: 200px;
+          border-radius: 4px;
+          object-fit: contain;
+          bottom: 0;
+          right: 0;
+      }
+
+      .bg-pink {
+        background-color: #f5ebf3 !important;
+      }
+
+      .card-body h3 {
+        color: #55298a;
+        margin-bottom: 0.5rem;
+        line-height: 1em;
+      }
+
+      .card-body h5 {
+        color: #6c757d;
+        margin-bottom: 1rem;
+        line-height: 1em;
+      }
+
+      .card-body h6 {
+        color: #000;
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+        margin-top: 1rem;
+        line-height: 1em;
+      }
+
+      .card-body p {
+        font-family: Oxygen, sans-serif;
+        font-size: .875rem;
+        font-weight: 400;
+        color: #6c757d;
+        line-height: 1.35em;
+        letter-spacing: .03em;
+        margin-bottom: 1rem;
+      }
+
+      .card-badge {
+        display: inline-block;
+        cursor: pointer;
+        background: #f5ebf3;
+        border-radius: 2px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        color: #55298a;
+        font-family: Oxygen, sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: 1.35px;
+        line-height: 12px;
+        padding: 5px 6px;      
+      }
+
+      .card-badge:hover {
+        background-color: #e9d5e4;
+      }
+
+.hero-section {
+    position: relative;
+    background-image: url('assets/resourceMap-animated.svg'), url('assets/bg.svg');
+    background-position: right bottom, center center, center center;
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-size: cover, 100% 100%, contain;
+    height: 600px;
+    overflow: hidden;
+    @media (max-width: 575px) {
+        height: 500px;
+        background-position: right bottom, center center, center center;
+        background-size: cover, 200% 400%, contain;
+        background-repeat: no-repeat, no-repeat, no-repeat;
+        color: #ffffff !important;
+    }
+    @media (min-width: 576px) and (max-width: 767px) {
+        height: 600px;
+        background-position: right bottom, center center, center center;
+        background-size: cover, 300% 200%, contain;
+        background-repeat: no-repeat, no-repeat, no-repeat;
+        color: #ffffff !important;
+    }
+    @media (min-width: 768px) {
+        height: 600px;
+        background-position: right bottom, center center, center center;
+        background-size: cover, 300% 300%, contain;
+        background-repeat: no-repeat, no-repeat, no-repeat;
+        color: #ffffff !important;
+    }
+}
+
+.hero-section h1 {
+  font-size: 69px}
+}
+
+/* Removed - hero section now always shows its background */
+
+      .kbd-wrapper {
+        @media (width < 576px) {
+          display: none;
+        }
+
+        @media (width > 575px) {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+
+      kbd {
+        padding: 0.1em 0.575em;
+        font-size: 0.75em;
+        font-weight: 700;
+        background-color: rgba(0, 0, 0, 0.35) !important;
+        color: white !important;
+        border-radius: 0.25rem;
+      }
+
+      /* Mobile Filter Controls */
+      #filter-controls-container {
+        display: none;
+
+        &.show {
+          display: block;
+        }
+      }
+      /* County Search Cards */
+      #county-cards .card {
+        overflow: hidden;
+        /* Ensures the zoomed background image doesn't overflow the card */
+        transition: all 0.4s cubic-bezier(1, 0.57, 0.34, -0.05);
+        /* Smooth transition for background image zoom */
+        background-size: 100%;
+        /* Maintain the original background-size if not already set inline */
+        background-position: center center;
+        filter: brightness(1) saturate(0.5);
+        text-shadow: 2.5px 2.5px 10px black;
+        text-transform: uppercase;
+      }
+
+      #county-cards .card:hover {
+        background-size: 110%;
+        /* Zooms in the background image */
+        filter: brightness(1.25) saturate(1.25);
+      }
+
+      #county-cards h3 {
+        filter: brightness(1.25);
+        color: white;
+      }
+      
+      #county-cards a {
+        text-decoration: none;
+      }
+
+      #results {
+        /* Always visible - no show/hide behavior */
+        display: block;
+        opacity: 1;
+      }
+
+      .list-group-item:hover {
+        background-color: aliceblue;
+      }
+
+        #card-philadelphia {
+            background-position: cover;
+            background-image: url(https://resourcespage.pages.dev/assets/counties/philadelphia.jpg);
+        }
+
+        #card-berks {
+            background-position: cover;
+            background-image: url(https://resourcespage.pages.dev/assets/counties/reading2.jpg);
+        }
+
+        #card-bucks {
+            background-position: cover;
+            background-image: url(https://resourcespage.pages.dev/assets/counties/doylestown.jpg);
+        }
+
+        #card-chester {
+            background-position: cover;
+            background-image: url(https://resourcespage.pages.dev/assets/counties/phoenixville.jpg);
+        }
+
+        #card-delaware {
+            background-position: cover;
+            background-image: url(https://resourcespage.pages.dev/assets/counties/delco-media.jpg);
+        }
+
+        #card-lancaster {
+            background-position: cover;
+            background-image: url(https://resourcespage.pages.dev/assets/counties/lancaster.jpg);
+        }
+
+        #card-montgomery {
+            background-position: cover;
+            background-image: url(https://resourcespage.pages.dev/assets/counties/pottstown.jpg);
+        }
+
+        #card-schuylkill {
+            background-position: cover;
+            background-image: url(https://resourcespage.pages.dev/assets/counties/schuylkill.jpg);            
+        }
+/* County Outline Controls */
+.county-outline-panel {
+  /* Hidden - now integrated into FilterPanelControl */
+  display: none !important;
+}
+
+.county-outline-panel .panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.county-outline-panel h6 {
+  margin: 0;
+  color: #55298a;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.county-checkbox-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.county-checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.county-color-box {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  border: 1px solid rgba(0,0,0,0.2);
+  flex-shrink: 0;
+}
+
+.county-checkbox-item input[type="checkbox"] {
+  margin: 0;
+  cursor: pointer;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .county-outline-panel {
+    top: auto;
+    bottom: 80px;
+    right: 10px;
+    left: 10px;
+    max-width: none;
+  }
+
+  .county-checkbox-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========================================
+   ENHANCED MAP CONTROLS STYLES
+   ======================================== */
+
+/* Custom MapLibre button hover effects */
+.maplibregl-ctrl button:not(:disabled):hover {
+  background-color: #20cb98 !important;
+}
+
+.maplibregl-ctrl button:hover {
+  background-color: #20cb98 !important;
+}
+
+/* Custom map control base styles */
+.maplibregl-ctrl {
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+}
+
+/* Navigation Control Group */
+.maplibregl-ctrl-group {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.maplibregl-ctrl-group:not(:empty) {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* All navigation buttons - matching search-toggle-btn style */
+.maplibregl-ctrl-group button {
+  flex-shrink: 0 !important;
+  width: 44px !important;
+  height: 44px !important;
+  background: #55298a;
+  color: white;
+  border: none;
+  border-radius: 50% !important;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease, transform 0.2s ease;
+  z-index: 2;
+  margin-bottom: 8px;
+}
+
+.maplibregl-ctrl-group button:last-child {
+  margin-bottom: 0;
+}
+
+.maplibregl-ctrl-group button:hover {
+  background: #20cb98;
+  transform: scale(1.05);
+}
+
+.maplibregl-ctrl-group button:active {
+  background: #20cb98;
+  transform: scale(0.98);
+}
+
+.maplibregl-ctrl-group button:focus {
+  border-radius: 50% !important;
+}
+
+/* Ensure Bootstrap icons in buttons are white */
+.maplibregl-ctrl-group button i {
+  color: white;
+  pointer-events: none;
+  font-size: 18px;
+}
+
+/* Remove default MapLibre button background images */
+.maplibregl-ctrl-group button.maplibregl-ctrl-zoom-in,
+.maplibregl-ctrl-group button.maplibregl-ctrl-zoom-out {
+  background-image: none !important;
+}
+
+/* Search Control - Expanding Container */
+.search-control {
+  display: flex;
+  align-items: center;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 22px;
+  overflow: hidden;
+  max-width: 44px;
+  height: 44px;
+  transition: max-width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s ease,
+              border-radius 0.3s ease;
+}
+
+.search-control.active {
+  max-width: 370px;
+}
+
+.search-control:focus-within {
+  box-shadow: 0 0 0 3px rgba(127, 255, 212, 0.5);
+}
+
+.search-toggle-btn {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  background: #55298a;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease, transform 0.2s ease;
+  z-index: 2;
+}
+
+.search-toggle-btn:hover {
+  background: #20cb98;
+  transform: scale(1.05);
+}
+
+.search-control.active .search-toggle-btn {
+  background: #20cb98;
+}
+
+.search-control.active .search-toggle-btn:hover {
+  background: #1ab888;
+}
+
+.search-control input {
+  flex: 1;
+  width: 0;
+  padding: 0;
+  margin-left: 0;
+  border: 0;
+  background: transparent;
+  font-size: 14px;
+  outline: none;
+  opacity: 0;
+  transition: opacity 0.3s ease 0.1s,
+              width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              padding 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              margin 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.search-control.active input {
+  width: 300px;
+  padding: 8px 16px;
+  margin-left: 8px;
+  opacity: 1;
+}
+
+.search-control input::placeholder {
+  color: #999;
+}
+
+/* Filter Panel Control - Expanding Container */
+.filter-panel-control {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 22px;
+  overflow: hidden;
+  max-width: 44px;
+  max-height: 44px;
+  transition: max-width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.2s,
+              border-radius 0.3s ease 0.2s;
+}
+
+.filter-panel-control.active {
+  max-width: 350px;
+  max-height: 80vh;
+  border-radius: 12px;
+}
+
+.filter-top-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-shrink: 0;
+  height: 44px;
+  overflow: hidden;
+}
+
+.filter-toggle-btn {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  background: #55298a;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease, transform 0.2s ease;
+  z-index: 2;
+  margin: 0;
+}
+
+.filter-toggle-btn:hover {
+  background: #20cb98;
+  transform: scale(1.05);
+}
+
+.filter-panel-control.active .filter-toggle-btn {
+  background: #20cb98;
+  border-radius: 50%;
+}
+
+.filter-panel-control.active .filter-toggle-btn:hover {
+  background: #1ab888;
+}
+
+.filter-panel-header {
+  padding: 0 16px;
+  background: transparent;
+  flex: 1;
+  opacity: 0;
+  width: 0;
+  transition: opacity 0.3s ease 0.2s,
+              width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+}
+
+.filter-panel-control.active .filter-panel-header {
+  opacity: 1;
+  width: auto;
+}
+
+.filter-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #333;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.filter-panel-header i {
+  margin-right: 6px;
+  color: #55298a;
+}
+
+.filter-panel-header button {
+  background: #55298a;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  transition: background 0.2s;
+}
+
+.filter-panel-header button:hover {
+  background: #6d3ba8;
+}
+
+.filter-panel-content {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease 0.4s,
+              transform 0.3s ease 0.4s;
+  overflow-y: auto;
+  max-height: 0;
+}
+
+.filter-panel-control.active .filter-panel-content {
+  opacity: 1;
+  transform: translateY(0);
+  max-height: calc(80vh - 44px);
+}
+
+.filter-section {
+  border-bottom: 1px solid #eee;
+}
+
+.filter-section:last-child {
+  border-bottom: none;
+}
+
+.filter-section-title {
+  font-weight: 600;
+  font-size: 13px;
+  color: #333;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  user-select: none;
+}
+
+.filter-section-title:hover {
+  background: #f8f8f8;
+}
+
+.filter-section-title i:first-child {
+  color: #55298a;
+}
+
+.accordion-icon {
+  margin-left: auto;
+  font-size: 12px;
+  transition: transform 0.3s ease;
+  color: #666;
+}
+
+.filter-section.expanded .accordion-icon {
+  transform: rotate(180deg);
+}
+
+.filter-count-badge {
+  background: #55298a;
+  color: white;
+  border-radius: 10px;
+  padding: 2px 8px;
+  font-size: 11px;
+  margin-left: auto;
+  font-weight: 600;
+}
+
+.filter-options-wrapper {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.filter-section.expanded .filter-options-wrapper {
+  max-height: 250px;
+}
+
+.filter-options {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0 16px 12px 16px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.filter-panel-control .filter-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+
+.filter-panel-control .filter-option:hover {
+  background: #f5f5f5;
+}
+
+.filter-panel-control .filter-option input[type="checkbox"] {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  accent-color: #55298a;
+}
+
+.filter-panel-control .filter-option label {
+  cursor: pointer;
+  font-size: 13px;
+  color: #555;
+  flex: 1;
+  user-select: none;
+}
+
+/* Active Filters Display */
+.active-filters {
+  padding: 12px 16px;
+  background: #f9f9f9;
+  border-top: 1px solid #eee;
+}
+
+.active-filters-title {
+  font-weight: 600;
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.filter-chip {
+  background: #55298a;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.filter-chip-remove {
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  color: white;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  font-size: 12px;
+}
+
+.filter-chip-remove:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Results Info Control */
+.results-info-control {
+  background: white;
+  padding: 10px 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  font-size: 13px;
+  color: #555;
+  font-weight: 500;
+  display: none; /* Hidden by default */
+}
+
+/* Show results info control only in fullscreen */
+.is-fullscreen .results-info-control {
+  display: block;
+}
+
+/* Export Control */
+.export-control {
+  background: #20cb98;
+  color: white;
+  padding: 10px 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  display: none; /* Hidden by default */
+  align-items: center;
+  gap: 6px;
+  transition: background 0.2s;
+}
+
+/* Show export control only in fullscreen */
+.is-fullscreen .export-control {
+  display: flex;
+}
+
+.export-control:hover {
+  background: #1ab888;
+}
+
+.export-control:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Class for Hiding Elements */
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Enhanced Map Popup Styles */
+.maplibregl-popup-content {
+  padding: 16px;
+  min-width: 250px;
+}
+
+.map-popup-container h3 {
+  color: #55298a;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+  line-height: 1.2;
+}
+
+.map-popup-container h5 {
+  color: #333;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0 0 10px 0;
+  line-height: 1.2;
+}
+
+.map-popup-container p {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.4;
+  margin: 0 0 12px 0;
+}
+
+.map-popup-container a {
+  color: #55298a;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.map-popup-container a:hover {
+  text-decoration: underline;
+}
+
+/* Dark Hover Tooltip Styles */
+.dark-tooltip .maplibregl-popup-content {
+  background-color: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  font-size: 13px;
+  font-weight: 500;
+  min-width: auto;
+  white-space: nowrap;
+}
+
+.dark-tooltip .maplibregl-popup-tip {
+  border-top-color: rgba(0, 0, 0, 0.85);
+}
+
+/* Custom marker styles */
+.custom-marker {
+  cursor: pointer;
+  transition: transform 0.2s ease-out;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+.custom-marker:hover {
+  transform: scale(1.1) translateZ(0);
+}
+
+/* Loading spinner */
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #55298a;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Scrollbar styles */
+.filter-options::-webkit-scrollbar,
+.filter-panel-control::-webkit-scrollbar {
+  width: 6px;
+}
+
+.filter-options::-webkit-scrollbar-track,
+.filter-panel-control::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.filter-options::-webkit-scrollbar-thumb,
+.filter-panel-control::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+.filter-options::-webkit-scrollbar-thumb:hover,
+.filter-panel-control::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Popup close button override */
+.maplibregl-popup-close-button {
+  background-color: #55298a;
+  border: 0;
+  border-radius: 0 3px 0 3px;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  font-size: 30px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.maplibregl-popup-close-button:hover {
+  background-color: #1ab888 !important;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .search-control.active {
+    max-width: calc(100vw - 80px);
+  }
+
+  .search-control.active input {
+    width: calc(100vw - 140px);
+  }
+
+  .filter-panel-control.active {
+    max-width: calc(100vw - 80px);
+  }
+
+  .county-checkbox-grid {
+    grid-template-columns: 1fr;
+  }
+}
