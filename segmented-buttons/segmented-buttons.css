@@ -1,0 +1,90 @@
+
+    /*
+    |==========================================================================
+    | SEGMENTED BUTTON ADDON CSS
+    |==========================================================================
+    */
+  
+    /* --- 1. UTILITY CLASS --- */
+    .bg-darker {
+      background: rgba(0, 0, 0, 0.15);
+    }
+  
+    /* --- 2. PARENT CLASSES: STRUCTURAL OVERRIDES --- */
+    
+    /* Applies to both horizontal and vertical parent buttons */
+    .btn-segmented,
+    .btn-segmented-vertical {
+      padding: 0 !important;
+      border-radius: var(--bs-border-radius) !important;
+      /* Use inline-flex for perfect vertical alignment of children and to eliminate baseline gaps */
+      display: inline-flex; 
+      align-items: stretch;
+    }
+  
+    /* Vertical-specific Parent Style */
+    .btn-segmented-vertical {
+      flex-direction: column !important;
+      overflow: hidden; /* Important for clean corner cuts when using borders */
+    }
+  
+    /* --- 3. CHILDREN: COMMON STYLES --- */
+    .btn-segmented > *,
+    .btn-segmented-vertical > * {
+      /* Apply common button segment padding */
+      padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x); 
+      /* Reset rounding on all children by default */
+      border-radius: 0 !important; 
+    }
+    
+    /* --- 4. HORIZONTAL SEGMENTATION (DEFAULT) --- */
+    .btn-segmented > * {
+      border-right: 1px solid rgba(0, 0, 0, 0.1); /* Separator border */
+    }
+  
+    /* Remove right separator from the last child */
+    .btn-segmented > *:last-child {
+        border-right: none;
+    }
+  
+    /* Horizontal Rounding */
+    .btn-segmented > *:first-child {
+      border-top-left-radius: var(--bs-btn-border-radius) !important;
+      border-bottom-left-radius: var(--bs-btn-border-radius) !important;
+    }
+  
+    .btn-segmented > *:last-child {
+      border-top-right-radius: var(--bs-btn-border-radius) !important;
+      border-bottom-right-radius: var(--bs-btn-border-radius) !important;
+    }
+  
+    /* --- 5. VERTICAL SEGMENTATION --- */
+    .btn-segmented-vertical > * {
+      display: block; /* Vertical Children must be block/full-width */
+      border-right: none !important; /* Override horizontal border */
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Separator border */
+    }
+  
+    /* Remove bottom separator from the last vertical child */
+    .btn-segmented-vertical > *:last-child {
+        border-bottom: none;
+    }
+    
+    /* Vertical Rounding */
+    .btn-segmented-vertical > *:first-child {
+      border-top-left-radius: var(--bs-btn-border-radius) !important;
+      border-top-right-radius: var(--bs-btn-border-radius) !important;
+    }
+  
+    /* Fixed: Use :last-child to target the bottom element */
+    .btn-segmented-vertical > *:last-child {
+      border-bottom-left-radius: var(--bs-btn-border-radius) !important;
+      border-bottom-right-radius: var(--bs-btn-border-radius) !important;
+    }
+
+    /* Demo styles for middle-child selector */
+    .list-demo li:not(:first-child):not(:last-child) {
+        background-color: #ffe0b2;
+        border: 1px dashed #ff9800;
+        font-weight: 600;
+    }
