@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Clipboard Demo</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css" />
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css" />
+    <style>
+    .editable-box {
+            border: 1px solid #ced4da;
+            padding: 10px;
+            min-height: 100px;
+            margin-top: 10px;
+            background-color: #f8f9fa;
+            border-radius: .375rem;
+        }
+        
+        -size: 0.9rem;
+    }
+    .btn-group .btn i {
+        margin-right: .35rem;
+    }
+    .sample-text {
+        user-select: text;
+    }
+    .editable-box {
+        border: 1px solid #ced4da;
+        padding: 10px;
+        min-height: 100px;
+        margin-top: 10px;
+        background-color: #f8f9fa;
+        border-radius: .375rem;
+    }
+    #log {
+        max-height: 180px;
+        overflow-y: auto;
+        font-size: 0.9rem;
+    }
+    .highlight {
+        background-color: yellow;
+        padding: 0;
+    }
+    .current-highlight {
+        background-color: orange;
+    }
+    </style>
+
+</head>
+
+<body>
+    <div class="container mt-5">
+        <header class="mb-3">
+            <h1 class="mb-2">Global Clipboard Operations Demo</h1>
+            <p class="text-muted mb-0">Use buttons or keyboard shortcuts (Ctrl+A, Ctrl+C, Ctrl+X, Ctrl+V). Works across inputs, textareas, contenteditable, and general page text.</p>
+        </header>
+        <!-- Controls -->
+        <div class="btn-group mb-3" role="group" aria-label="Clipboard controls">
+            <button class="btn btn-primary" id="btnSelectAll" type="button"> <i class="bi bi-arrows-fullscreen"></i> Select All </button>
+            <button class="btn btn-warning" id="btnCut" type="button"> <i class="bi bi-scissors"></i> Cut </button>
+            <button class="btn btn-success" id="btnCopy" type="button"> <i class="bi bi-copy"></i> Copy </button>
+            <button class="btn btn-info" id="btnPaste" type="button"> <i class="bi bi-clipboard-check"></i> Paste </button>
+        </div>
+        <div class="btn-toolbar" role="toolbar">
+            <div class="btn-group mb-3" role="group" aria-label="Clipboard controls">
+                <button class="btn btn-outline-dark" id="btnSelectAll" type="button"> <i class="bi bi-arrows-fullscreen"></i></button>
+                <button class="btn btn-outline-dark" id="btnCut" type="button"> <i class="bi bi-scissors"></i></button>
+                <button class="btn btn-outline-dark" id="btnCopy" type="button"> <i class="bi bi-copy"></i></button>
+                <button class="btn btn-outline-dark" id="btnPaste" type="button"> <i class="bi bi-clipboard-check"></i></button>
+            </div>
+        </div>
+        <!-- Inputs -->
+        <div class="mb-3">
+            <label for="inputBox" class="form-label">Input</label>
+            <input type="text" id="inputBox" class="form-control" placeholder="Type something here (editable)" /> </div>
+        <div class="mb-3">
+            <label for="textArea" class="form-label">Textarea</label>
+            <textarea id="textArea" class="form-control" rows="3" placeholder="Type more text here (editable)"></textarea>
+        </div>
+        <!-- Contenteditable -->
+        <div class="mb-3">
+            <label for="editableDiv" class="form-label">Contenteditable</label>
+            <div id="editableDiv" class="editable-box" contenteditable="true"> This is a <strong>contenteditable</strong> area. You can type here and test clipboard operations. Try selecting text and using Copy/Cut/Paste. </div>
+        </div>
+        <!-- Non-editable sample text -->
+        <div class="mb-3 sample-text">
+            <p class="mb-1"> <span class="badge bg-secondary me-2">Non-editable sample text:</span> Select parts of this paragraph and use Copy/Cut (Cut will gracefully fallback to Copy, since this isn’t editable). </p>
+            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at tortor ut mi volutpat dapibus. Curabitur sit amet bibendum nulla.</p>
+        </div>
+        <!-- Log -->
+        <div class="alert alert-secondary" id="log" role="alert" aria-live="polite"> <strong>Operation Log:</strong>
+            <br /> </div>
+    </div>
+    <!-- Bootstrap JS -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="js/clipboard.js"></script>
+</body>
+
+</html>

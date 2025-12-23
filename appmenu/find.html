@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixed Floating Search Component</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css" />
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css" />
+    <!-- Google Font (Inter) for modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS for the fixed component and highlighting -->
+    <style>
+
+        #floatingSearchBar {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1060; /* Higher than modal (1050) to ensure visibility */
+            width: 300px;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        /* Styling for search results */
+        .search-match {
+            background-color: yellow;
+            color: black;
+            padding: 1px 2px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        .search-match.current {
+            background-color: #0d6efd; /* Bootstrap primary color */
+            color: white;
+            box-shadow: 0 0 5px rgba(13, 110, 253, 0.8);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container my-5">
+        <h1 class="mb-4">Website Content Area</h1>
+        <p>Scroll down to see the fixed search bar stay in place when opened.</p>
+        
+        <!-- The Button to Trigger the Search Bar -->
+        <button id="findButton" class="btn btn-primary shadow-sm mb-5 rounded-md">
+            <i class="bi bi-search me-3"></i><span>Find</span>
+        </button>
+
+        <!-- Dummy Content to Force Scrolling -->
+        <!-- Content that will be searched is wrapped in #contentArea -->
+        <div id="contentArea" class="row"> 
+            <div class="col-12">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Sed posuere consectetur est at lobortis. Nulla vitae elit libero, a pharetra augue. Donec id elit non mi porta gravida at eget metus.</p>
+                <p>Mauris sit amet quam vel lacus commodo scelerisque. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam porta sem malesuada magna mollis euismod. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                <p>Nulla vitae elit libero, a pharetra augue. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum. Donec sed odio dui. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                <p>Curabitur blandit tempus porttitor. Etiam porta sem malesuada magna mollis euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+                <p><strong>This content helps us test the fixed positioning. Keep scrolling down!</strong></p>
+                <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum. Nulla vitae elit libero, a pharetra augue. Etiam porta sem malesuada magna mollis euismod. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec ullamcorper nulla non metus auctor fringilla. Aenean lacinia bibendum nulla sed consectetur.</p>
+                <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Nullam quis risus eget urna mollis ornare vel eu leo. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                <p>Curabitur blandit tempus porttitor. Etiam porta sem malesuada magna mollis euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- THE FLOATING SEARCH BAR COMPONENT -->
+    <div id="floatingSearchBar" class="d-none bg-white p-3 rounded-lg shadow-lg border border-primary">
+        <div class="d-flex align-items-center mb-2">
+            <h6 id="matchCounter" class="me-auto mb-0 text-muted small">0 of 0</h6>
+            <button id="closeButton" type="button" class="btn-close" aria-label="Close"></button>
+        </div>
+        
+        <!-- Search Controls -->
+        <div class="input-group input-group-sm mb-2">
+            <input type="text" id="searchInput" class="form-control form-control-sm" placeholder="Enter text to search..." aria-label="Search input">
+            <button id="prevButton" class="btn btn-outline-secondary" type="button" title="Previous Result" disabled>
+                <i class="bi bi-chevron-up"></i>
+            </button>
+            <button id="nextButton" class="btn btn-outline-secondary" type="button" title="Next Result" disabled>
+                <i class="bi bi-chevron-down"></i>
+            </button>
+        </div>
+    </div>
+
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- DOM Elements ---
+            const findButton = document.getElementById('findButton');
+            const closeButton = document.getElementById('closeButton');
+            const searchBar = document.getElementById('floatingSearchBar');
+            const searchInput = document.getElementById('searchInput');
+            const prevButton = document.getElementById('prevButton');
+            const nextButton = document.getElementById('nextButton');
+            const contentArea = document.getElementById('contentArea');
+            const matchCounter = document.getElementById('matchCounter');
+
+            // --- State and Constants ---
+            let searchMatches = [];
+            let currentMatchIndex = -1;
+            const originalContent = contentArea.innerHTML; // Store original content to reset highlighting
+
+            // --- Core Functions ---
+
+            /**
+             * Toggles the visibility of the search bar and sets focus.
+             * @param {boolean} show - Explicitly show or hide the bar.
+             */
+            function toggleSearchBar(show) {
+                if (typeof show === 'undefined') {
+                    show = searchBar.classList.contains('d-none');
+                }
+
+                if (show) {
+                    searchBar.classList.remove('d-none');
+                    searchInput.focus();
+                } else {
+                    searchBar.classList.add('d-none');
+                    removeHighlights();
+                    searchInput.value = '';
+                    // Return focus to the body to prevent interference
+                    document.body.focus();
+                }
+            }
+
+            /**
+             * Updates the match counter text and button states.
+             */
+            function updateUI() {
+                const total = searchMatches.length;
+                if (total === 0) {
+                    matchCounter.textContent = '0 of 0';
+                    prevButton.disabled = true;
+                    nextButton.disabled = true;
+                } else {
+                    matchCounter.textContent = `${currentMatchIndex + 1} of ${total}`;
+                    prevButton.disabled = false;
+                    nextButton.disabled = false;
+                }
+            }
+
+            /**
+             * Removes all highlights and restores original content.
+             */
+            function removeHighlights() {
+                contentArea.innerHTML = originalContent;
+                searchMatches = [];
+                currentMatchIndex = -1;
+                updateUI();
+            }
+
+            /**
+             * Performs the search and highlights matches in the content area.
+             */
+            function performSearch() {
+                removeHighlights(); // Start with clean slate
+
+                const term = searchInput.value.trim();
+                if (term.length < 2) {
+                    return; // Require at least 2 characters for search
+                }
+
+                // 1. Create the regex for global, case-insensitive search
+                const safeTerm = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                const regex = new RegExp(`(${safeTerm})`, 'gi');
+
+                // 2. Walk the DOM to find text nodes in contentArea
+                const walker = document.createTreeWalker(
+                    contentArea,
+                    NodeFilter.SHOW_TEXT,
+                    {
+                        acceptNode: function(node) {
+                            // Only search in nodes that are not inside our own highlight spans
+                            if (node.parentElement && node.parentElement.classList.contains('search-match')) {
+                                return NodeFilter.FILTER_REJECT;
+                            }
+                            // Only accept non-empty text nodes
+                            return node.nodeValue.trim() !== '' ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+                        }
+                    }
+                );
+
+                // Collect all text nodes first to avoid DOM modification issues during iteration
+                const textNodes = [];
+                let node;
+                while ((node = walker.nextNode())) {
+                    textNodes.push(node);
+                }
+
+                // Now process each text node
+                textNodes.forEach(node => {
+                    const text = node.nodeValue;
+                    
+                    if (regex.test(text)) {
+                        // Reset regex lastIndex before processing
+                        regex.lastIndex = 0;
+                        
+                        // Create a document fragment to hold the new structure
+                        const fragment = document.createDocumentFragment();
+                        let lastIndex = 0;
+                        let match;
+
+                        // Use exec to iterate through all matches
+                        while ((match = regex.exec(text)) !== null) {
+                            // Append the text before the match
+                            if (match.index > lastIndex) {
+                                fragment.appendChild(document.createTextNode(text.substring(lastIndex, match.index)));
+                            }
+
+                            // Create the highlight span
+                            const highlightSpan = document.createElement('span');
+                            highlightSpan.className = 'search-match';
+                            highlightSpan.textContent = match[0];
+                            fragment.appendChild(highlightSpan);
+                            searchMatches.push(highlightSpan);
+
+                            lastIndex = regex.lastIndex;
+                        }
+
+                        // Append the remaining text after the last match
+                        if (lastIndex < text.length) {
+                            fragment.appendChild(document.createTextNode(text.substring(lastIndex)));
+                        }
+
+                        // Replace the original text node with the fragment
+                        node.parentNode.replaceChild(fragment, node);
+                    }
+                });
+                
+                // 3. Navigate to the first result
+                if (searchMatches.length > 0) {
+                    currentMatchIndex = -1; // Set to -1 so navigate(1) goes to index 0
+                    navigate(1);
+                }
+            }
+
+            /**
+             * Navigates to the next or previous search result.
+             * @param {number} direction - 1 for next, -1 for previous.
+             */
+            function navigate(direction) {
+                if (searchMatches.length === 0) return;
+
+                // 1. Remove focus from the current element (if any)
+                if (currentMatchIndex >= 0) {
+                    searchMatches[currentMatchIndex].classList.remove('current');
+                }
+
+                // 2. Calculate the new index
+                currentMatchIndex += direction;
+                
+                // Wrap around logic (optional, but standard for find bars)
+                if (currentMatchIndex >= searchMatches.length) {
+                    currentMatchIndex = 0;
+                } else if (currentMatchIndex < 0) {
+                    currentMatchIndex = searchMatches.length - 1;
+                }
+
+                // 3. Apply focus to the new element
+                const currentMatch = searchMatches[currentMatchIndex];
+                currentMatch.classList.add('current');
+
+                // 4. Scroll the new element into view
+                currentMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                // 5. Update the result counter
+                updateUI();
+            }
+
+
+            // --- Event Listeners ---
+            
+            // 1. Toggle Button and Close Button
+            findButton.addEventListener('click', () => toggleSearchBar());
+            closeButton.addEventListener('click', () => toggleSearchBar(false));
+
+            // 2. Search Navigation Buttons
+            nextButton.addEventListener('click', () => navigate(1));
+            prevButton.addEventListener('click', () => navigate(-1));
+
+            // 3. Search Input Listeners (Typing and Enter/Shift+Enter)
+            searchInput.addEventListener('input', performSearch);
+            searchInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault(); // Prevent form submission or newline
+                    if (e.shiftKey) {
+                        navigate(-1); // Shift + Enter triggers Previous
+                    } else {
+                        navigate(1); // Enter triggers Next
+                    }
+                }
+            });
+
+            // 4. Global Keyboard Listeners (Ctrl/Cmd + F and Escape)
+            document.addEventListener('keydown', (e) => {
+                // Ctrl/Cmd + F to toggle search bar
+                if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
+                    e.preventDefault();
+                    toggleSearchBar();
+                    return;
+                }
+                
+                // Escape to close search bar (only if search bar is visible)
+                if (e.key === 'Escape' && !searchBar.classList.contains('d-none')) {
+                    toggleSearchBar(false);
+                    return;
+                }
+            });
+        });
+    
+    </script>
+</body>
+</html>

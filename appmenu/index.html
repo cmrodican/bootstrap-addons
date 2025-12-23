@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css" />
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css" />
+    <!-- Appmenu CSS -->
+    <link rel="stylesheet" href="css/style.css" /> </head>
+
+<body>
+    <!-- Target container for the dynamic navigation bar -->
+    <div id="navbar-container"></div>
+    <!-- Application Content Area -->
+    <div class="container mt-4">
+        <h1 class="mb-4">Static Web App Content</h1>
+        <!-- Text area to test Cut/Copy/Paste -->
+        <textarea id="editor" class="form-control mb-3" rows="5" placeholder="Type here to test Cut, Copy, and Paste actions...">Hello world!</textarea>
+        <!-- Button to launch the About Modal -->
+        <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#aboutModal"> Open About Modal (Check Help Menu too!) </button>
+        <p class="mt-4"> Current Zoom Level: <span id="zoom-level">100%</span> </p>
+        <!-- Status log for menu actions -->
+        <div id="app-status" class="alert alert-info"> Action Status: Ready </div>
+    </div>
+    <!-- Target container for the dynamic About Modal -->
+    <div id="modal-container"></div>
+    <!-- Bootstrap JS -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

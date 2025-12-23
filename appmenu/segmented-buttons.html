@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bootstrap Split Button with Filter Effects</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css" />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css" />
+    <style>
+      /* ======================================= */
+      /* --- 1. UTILITY CLASS --- */
+      .bg-darker {
+        background: rgba(0, 0, 0, 0.15);
+      }
+
+      /* ======================================= */
+      /* --- 2. PARENT CLASSES: STRUCTURAL OVERRIDES --- */
+
+      /* Parent container for both segmented types */
+      .btn-segmented,
+      .btn-segmented-vertical {
+        padding: 0 !important;
+        border-radius: var(--bs-border-radius) !important;
+        /* FIX: Use inline-flex for perfect vertical alignment of children and to eliminate baseline gaps */
+        display: inline-flex;
+        align-items: stretch;
+      }
+
+      /* Vertical-specific Parent Style */
+      .btn-segmented-vertical {
+        flex-direction: column !important;
+        overflow: hidden;
+      }
+
+      /* ======================================= */
+      /* --- 3. CHILDREN: COMMON STYLES --- */
+      .btn-segmented > *,
+      .btn-segmented-vertical > * {
+        /* Apply common button segment padding */
+        padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x);
+        /* Reset rounding on all children by default */
+        border-radius: 0 !important;
+      }
+
+      /* --- HORIZONTAL SEGMENTATION (DEFAULT) --- */
+      .btn-segmented > * {
+        /* The children are now flex items, so display: inline-block is no longer needed/used. */
+        border-right: 1px solid rgba(0, 0, 0, 0.1); /* Separator border */
+      }
+
+      /* Remove right separator from the last child */
+      .btn-segmented > *:last-child {
+        border-right: none;
+      }
+
+      /* Horizontal Rounding */
+      .btn-segmented > *:first-child {
+        border-top-left-radius: var(--bs-btn-border-radius) !important;
+        border-bottom-left-radius: var(--bs-btn-border-radius) !important;
+      }
+
+      .btn-segmented > *:last-child {
+        border-top-right-radius: var(--bs-btn-border-radius) !important;
+        border-bottom-right-radius: var(--bs-btn-border-radius) !important;
+      }
+
+      /* --- VERTICAL SEGMENTATION --- */
+      .btn-segmented-vertical > * {
+        display: block; /* Vertical Children must be block/full-width */
+        border-right: none !important; /* Override horizontal border */
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Separator border */
+      }
+
+      /* Remove bottom separator from the last vertical child */
+      .btn-segmented-vertical > *:last-child {
+        border-bottom: none;
+      }
+
+      /* Vertical Rounding */
+      .btn-segmented-vertical > *:first-child {
+        border-top-left-radius: var(--bs-btn-border-radius) !important;
+        border-top-right-radius: var(--bs-btn-border-radius) !important;
+      }
+
+      /* Corrected: Use :last-child to target the bottom element */
+      .btn-segmented-vertical > *:last-child {
+        border-bottom-left-radius: var(--bs-btn-border-radius) !important;
+        border-bottom-right-radius: var(--bs-btn-border-radius) !important;
+      }
+
+      /* ======================================= */
+      /* --- DEMONSTRATION OF NEW SELECTOR --- */
+      /* Selects any <li> element that is NOT the first child AND NOT the last child */
+      .list-demo li:not(:first-child):not(:last-child) {
+        background-color: #ffe0b2; /* Light orange highlight */
+        border: 1px dashed #ff9800;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body class="p-4 bg-light">
+    <h1>Segmented Buttons</h1>
+    <p>Flexible, segmented buttons that can display icons, text labels, or highlight specific actions, all within a single Bootstrap button wrapper (.btn).</p>
+    <div class="container py-5">
+      <h2 class="mb-4">Horizontal Segmented Buttons</h2>
+      <div class="row">
+        <div class="col-md-12 mb-2">
+          <a href="#" class="btn btn-info btn-segmented">
+            <span class="bg-darker"><i class="bi bi-arrows-fullscreen"></i></span>
+            <span>Full</span>
+            <span class="bg-darker">Screen</span>
+            <span>Button</span>
+          </a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 mb-2">
+          <button type="button" class="btn btn-success btn-segmented">
+            <span class="bg-darker">
+              <i class="bi bi-check"></i>
+            </span>
+            <span>Success</span>
+          </button>
+          <button type="button" class="btn btn-danger btn-segmented">
+            <span class="bg-darker"><i class="bi bi-x-lg"></i></span>
+            <span>Cancel</span>
+          </button>
+          <button type="button" class="btn btn-warning btn-segmented">
+            <span class="bg-darker"><i class="bi bi-bookmark"></i></span>
+            <span>Bookmark</span>
+          </button>
+          <button type="button" class="btn btn-primary btn-segmented">
+            <span class="bg-darker"><i class="bi bi-camera"></i></span>
+            <span>Camera</span>
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 mb-2">
+          <button type="button" class="btn btn-outline-dark btn-segmented">
+            <span class="bg-darker"><i class="bi bi-chevron-left"></i></span>
+            <span>Left</span>
+          </button>
+          <button type="button" class="btn btn-outline-dark btn-segmented">
+            <span class="bg-darker"><i class="bi bi-chevron-right"></i></span>
+            <span>Right</span>
+          </button>
+          <button type="button" class="btn btn-success btn-segmented">
+            <span class="bg-darker"><i class="bi bi-hand-thumbs-up"></i></span>
+            <span>Thumbs Up</span>
+          </button>
+          <button type="button" class="btn btn-danger btn-segmented">
+            <span class="bg-darker"><i class="bi bi-hand-thumbs-down"></i></span>
+            <span>Thumbs Down</span>
+          </button>
+        </div>
+        <div class="col-md-12 mb-2">
+          <button type="button" class="btn btn-info btn-segmented">
+            <span class="bg-darker"><i class="bi bi-arrow-clockwise"></i></span>
+            <span>Refresh</span>
+          </button>
+          <button type="button" class="btn btn-danger btn-segmented">
+            <span class="bg-darker"><i class="bi bi-trash"></i></span>
+            <span>Trash</span>
+          </button>
+          <a class="btn btn-success btn-segmented" href="#" role="button">
+            <span class="bg-darker"><i class="bi bi-info-circle-fill"></i></span>
+            <span>Info Web</span>
+          </a>
+        </div>
+      </div>
+      <h2>Vertical Segmented Buttons</h2>
+      <div class="row">
+        <div class="col-md-12 mb-2">
+          <a href="#" class="btn btn-info btn-segmented btn-segmented-vertical">
+            <span class="bg-darker"><i class="bi bi-arrows-fullscreen"></i></span>
+            <span>Full</span>
+            <span class="bg-darker">Screen</span>
+            <span>Button</span>
+          </a>
+          <button type="button" class="btn btn-success btn-segmented btn-segmented-vertical">
+            <span class="bg-darker">
+              <i class="bi bi-check"></i>
+            </span>
+            <span>Success</span>
+          </button>
+          <button type="button" class="btn btn-danger btn-segmented btn-segmented-vertical">
+            <span class="bg-darker"><i class="bi bi-x-lg"></i></span>
+            <span>Cancel</span>
+          </button>
+          <button type="button" class="btn btn-warning btn-segmented btn-segmented-vertical">
+            <span class="bg-darker"><i class="bi bi-bookmark"></i></span>
+            <span>Bookmark</span>
+          </button>
+          <button type="button" class="btn btn-primary btn-segmented btn-segmented-vertical">
+            <span class="bg-darker"><i class="bi bi-camera"></i></span>
+            <span>Camera</span>
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 mb-2">
+          <button type="button" class="btn btn-outline-dark btn-segmented btn-segmented-vertical">
+            <span class="bg-darker"><i class="bi bi-chevron-left"></i></span>
+            <span>Left</span>
+          </button>
+          <button type="button" class="btn btn-outline-dark btn-segmented btn-segmented-vertical">
+            <span class="bg-darker"><i class="bi bi-chevron-right"></i></span>
+            <span>Right</span>
+          </button>
+          <button type="button" class="btn btn-success btn-segmented btn-segmented-vertical">
+            <span class="bg-darker"><i class="bi bi-hand-thumbs-up"></i></span>
+            <span>Thumbs Up</span>
+          </button>
+          <button type="button" class="btn btn-danger btn-segmented btn-segmented-vertical">
+            <span class="bg-darker"><i class="bi bi-hand-thumbs-down"></i></span>
+            <span>Thumbs Down</span>
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 mb-2">
+          <button type="button" class="btn btn-info btn-segmented btn-segmented-vertical">
+            <span class="bg-darker"><i class="bi bi-arrow-clockwise"></i></span>
+            <span>Refresh</span>
+          </button>
+          <button type="button" class="btn btn-danger btn-segmented btn-segmented-vertical">
+            <span class="bg-darker"><i class="bi bi-trash"></i></span>
+            <span>Trash</span>
+          </button>
+          <a class="btn btn-success btn-segmented btn-segmented-vertical" href="#" role="button">
+            <span class="bg-darker"><i class="bi bi-info-circle-fill"></i></span>
+            <span>Info Web</span>
+          </a>
+        </div>
+      </div>
+      <h2>Demo: Targeting Middle Children</h2>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card shadow-sm list-demo" style="width: 20rem">
+            <div class="card-header bg-dark text-white">List Items</div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Item 1 (First Child)</li>
+              <li class="list-group-item">Item 2 (Middle Child)</li>
+              <li class="list-group-item">Item 3 (Middle Child)</li>
+              <li class="list-group-item">Item 4 (Last Child)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS (required for some Bootstrap components, although not strictly for these buttons) -->
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
