@@ -1,0 +1,29 @@
+/* Layout-only styles for index.html. All color comes from the Bootswatch Pulse theme. */
+html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+.brand-mark { width: 30px; height: 30px; }
+.card-icon { width: 36px; height: 36px; }
+.card-icon .bi { font-size: 1.1rem; line-height: 1; }
+.addon-card { transition: transform .2s ease; }
+.addon-card:hover { transform: translateY(-4px); }
+.status-dot { width: 7px; height: 7px; }
+.hero-lede { max-width: 520px; }
+.section-intro { max-width: 390px; }
+.install-copy { max-width: 560px; }
+.about-copy { max-width: 500px; }
+.value-icon { width: 31px; height: 31px; flex: none; }
+@media (min-width: 768px) { .border-start-md { border-left: var(--bs-border-width) solid var(--bs-border-color); } .border-md-top-0 { border-top: 0 !important; } }
+
+.hero-art { min-height: 330px; place-items: center; }
+.orbit { transform: rotate(-24deg); }
+.orbit-one { width: 335px; height: 180px; }
+.orbit-two { width: 280px; height: 245px; transform: rotate(38deg); }
+.orbit-three { width: 380px; height: 250px; transform: rotate(68deg); }
+.art-center { width: 118px; height: 118px; gap: 5px; transform: rotate(-6deg); }
+.art-center small { font-size: 8px; letter-spacing: 3px; }
+.float-card { min-width: 103px; height: 54px; }
+.float-grid { top: 42px; left: 4%; transform: rotate(-6deg); }
+.float-table { top: 57px; right: 3%; transform: rotate(6deg); }
+.float-nav { right: 2%; bottom: 45px; transform: rotate(-5deg); }
+.float-buttons { bottom: 33px; left: 4%; transform: rotate(5deg); }
+@media (max-width: 991.98px) { .hero-art { transform: scale(.85); } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .addon-card { transition: none; } }

@@ -1,0 +1,55 @@
+/*!
+ * Styles for the Bootstrap color mode switcher
+ * Extracted from Bootstrap's docs examples (https://getbootstrap.com/)
+ * Copyright 2011-2025 The Bootstrap Authors
+ * Licensed under the Creative Commons Attribution 3.0 Unported License.
+ */
+
+/* Baseline for the inline SVG icons: align them with adjacent text and let
+   them inherit the current text color instead of rendering solid black. */
+.bi {
+  vertical-align: -0.125em;
+  fill: currentColor;
+  stroke: none; /* site.css sets a global svg stroke for line icons */
+}
+
+/* Float the switcher above sticky headers, offcanvas backdrops and modals'
+   sibling content. Bootstrap's own layers top out around 1080. */
+.bd-mode-toggle {
+  z-index: 1500;
+}
+
+/* The icons carry no intrinsic size, so give them one relative to the button. */
+.bd-mode-toggle .bi {
+  width: 1em;
+  height: 1em;
+}
+
+/* Reveal the checkmark on whichever menu item the script marked .active.
+   The markup ships every checkmark with .d-none; this overrides that one. */
+.bd-mode-toggle .dropdown-menu .active .bi {
+  display: block !important;
+}
+
+/* Optional: the violet button from Bootstrap's docs. Drop this rule and use
+   class="btn btn-primary" on #bd-theme to inherit your own theme instead. */
+.btn-bd-primary {
+  --bd-violet-bg: #712cf9;
+  --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: var(--bs-white);
+  --bs-btn-bg: var(--bd-violet-bg);
+  --bs-btn-border-color: var(--bd-violet-bg);
+  --bs-btn-hover-color: var(--bs-white);
+  --bs-btn-hover-bg: #6528e0;
+  --bs-btn-hover-border-color: #6528e0;
+  --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+  --bs-btn-active-color: var(--bs-btn-hover-color);
+  --bs-btn-active-bg: #5a23c8;
+  --bs-btn-active-border-color: #5a23c8;
+}
+
+/* Keep the switcher's inline SVG icons from picking up the Bootstrap Icons font. */
+svg.bi::before {
+  content: none;
+}
