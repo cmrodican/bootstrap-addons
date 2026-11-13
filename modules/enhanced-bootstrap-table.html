@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Add filtering, sorting, and column resizing to Bootstrap tables."><title>Enhanced Bootstrap Table — Bootstrap Addons</title><link rel="stylesheet" href="../assets/site.css"></head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header"><a class="brand" href="../index.html"><span class="brand-mark">B<span>+</span></span><span>Bootstrap Addons</span></a><nav class="main-nav" aria-label="Main navigation"><a href="../index.html">Overview</a><a class="active" href="../index.html#addons">Add-ons</a><a href="https://github.com/cmrodican/bootstrap-addons">GitHub <span aria-hidden="true">↗</span></a></nav></header>
+    <main id="main">
+      <section class="detail-hero"><div class="breadcrumbs"><a href="../index.html">Home</a><span>/</span>Enhanced Bootstrap Table</div><p class="detail-kicker">DATA &amp; DISPLAY · JAVASCRIPT</p><h1>Enhanced Bootstrap Table</h1><p class="lead">Add useful data-table interactions to existing Bootstrap tables: filter values, sort by data type, and resize columns.</p><div class="detail-actions"><a class="button button-primary" href="../enhanced-bootstrap-table/readme.md">Read the full guide <span aria-hidden="true">↗</span></a><a class="button button-secondary" href="https://github.com/cmrodican/bootstrap-addons/tree/main/enhanced-bootstrap-table">Browse source <span aria-hidden="true">↗</span></a></div></section>
+      <div class="detail-layout"><article class="detail-content">
+        <section class="detail-block"><h2>Features</h2><ul><li>Column filters with searchable checkbox options.</li><li>Data-aware sorting for text, numbers, currency, dates, times, and more.</li><li>Resizable columns and optional JSON-based table population.</li><li>Uses Bootstrap 5.3 styling and Bootstrap Icons.</li></ul></section>
+        <section class="detail-block"><h2>Quick start</h2><p>Add a unique <code>data-column</code> identifier to each header. A <code>data-type</code> enables type-aware sorting.</p><pre class="code-block"><code>&lt;link rel="stylesheet" href="enhanced-bootstrap-table/enhancedTable.css"&gt;
+&lt;script src="enhanced-bootstrap-table/enhancedTable.js"&gt;&lt;/script&gt;
+
+&lt;table class="table resizable-table" id="people"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th data-column="name" data-type="text"&gt;Name&lt;/th&gt;
+    &lt;th data-column="joined" data-type="date"&gt;Joined&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;...&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;script&gt;
+  const enhancer = new BootstrapTableEnhancer();
+  enhancer.enhance('people');
+&lt;/script&gt;</code></pre><div class="callout">For JSON population, include <code>JSONforEnhancedTable.js</code> and see the full module README for the data-populator API.</div></section>
+        <section class="detail-block"><h2>Supported data types</h2><p>Use values such as <code>text</code>, <code>whole-number</code>, <code>decimal</code>, <code>currency</code>, <code>date</code>, <code>time</code>, <code>true-false</code>, <code>phone-number</code>, and <code>email-address</code> in <code>data-type</code>.</p></section>
+        <section class="detail-block"><h2>Project files</h2><ul><li><a href="../enhanced-bootstrap-table/enhancedTable.js">enhancedTable.js</a> — table interactions</li><li><a href="../enhanced-bootstrap-table/enhancedTable.css">enhancedTable.css</a> — component styles</li><li><a href="../enhanced-bootstrap-table/JSONforEnhancedTable.js">JSONforEnhancedTable.js</a> — optional JSON helper</li><li><a href="../enhanced-bootstrap-table/readme.md">readme.md</a> — full usage and API reference</li></ul></section>
+      </article><aside class="detail-aside"><div class="aside-card"><h2>Explore add-ons</h2><nav class="detail-nav" aria-label="Add-on pages"><a href="app-menu.html">App Menu</a><a href="css-grid.html">CSS Grid</a><a aria-current="page" href="enhanced-bootstrap-table.html">Enhanced Table</a><a href="segmented-buttons.html">Segmented Buttons</a><a href="tv-navigation.html">TV Navigation</a><a href="bs-colors.html">bsColors</a><a href="bootstrap-docs.html">Bootstrap Docs CSS</a></nav><h3>Requirements</h3><ul><li>Bootstrap 5.3+</li><li>Bootstrap Icons</li></ul></div></aside></div>
+    </main>
+    <footer class="site-footer"><a class="brand" href="../index.html"><span class="brand-mark small">B<span>+</span></span><span>Bootstrap Addons</span></a><p>Independent add-ons for Bootstrap projects.</p><div><a href="https://github.com/cmrodican/bootstrap-addons">GitHub</a><a href="../LICENSE">GPL-2.0 License</a></div></footer>
+  </body>
+</html>

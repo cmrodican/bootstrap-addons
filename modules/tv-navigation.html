@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Keyboard, gamepad, and remote-control navigation for TV and kiosk web interfaces."><title>TV Navigation Framework — Bootstrap Addons</title><link rel="stylesheet" href="../assets/site.css"></head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header"><a class="brand" href="../index.html"><span class="brand-mark">B<span>+</span></span><span>Bootstrap Addons</span></a><nav class="main-nav" aria-label="Main navigation"><a href="../index.html">Overview</a><a class="active" href="../index.html#addons">Add-ons</a><a href="https://github.com/cmrodican/bootstrap-addons">GitHub <span aria-hidden="true">↗</span></a></nav></header>
+    <main id="main">
+      <section class="detail-hero"><div class="breadcrumbs"><a href="../index.html">Home</a><span>/</span>TV Navigation</div><p class="detail-kicker">ACCESSIBILITY · JAVASCRIPT</p><h1>TV Navigation Framework</h1><p class="lead">Add directional keyboard, gamepad, and remote-style focus navigation to interfaces built for TVs, kiosks, and large screens.</p><div class="detail-actions"><a class="button button-primary" href="../tv-navigation-framework/example.html">Try the test page <span aria-hidden="true">↗</span></a><a class="button button-secondary" href="../tv-navigation-framework/examples/netflix-demo.html">View the Netflix-style demo <span aria-hidden="true">↗</span></a></div></section>
+      <div class="detail-layout"><article class="detail-content">
+        <section class="detail-block"><h2>Navigation features</h2><ul><li>Directional movement between focusable elements.</li><li>Keyboard and gamepad support.</li><li>Focus management for modals and dynamic content.</li><li>Optional focus styles, help, status, and audio feedback.</li></ul><p>Use the focusable selector option to match the framework to your UI. The default selector includes buttons, links, form controls, and elements marked with <code>.tv-nav-focusable</code>.</p></section>
+        <section class="detail-block"><h2>Quick start</h2><p>Load the framework CSS and JavaScript. Creating an instance initializes the navigation behavior.</p><pre class="code-block"><code>&lt;link rel="stylesheet"
+  href="tv-navigation-framework/tv-navigation-framework.css"&gt;
+
+&lt;button class="tv-nav-focusable"&gt;Play&lt;/button&gt;
+&lt;a class="tv-nav-focusable" href="/browse"&gt;Browse&lt;/a&gt;
+
+&lt;script src="tv-navigation-framework/tv-navigation-framework.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  const tvNavigation = new TVNavigationFramework({
+    enableAudio: false
+  });
+&lt;/script&gt;</code></pre><div class="callout">The framework starts automatically in its constructor; do not call <code>init()</code> again. Set <code>enableAudio: false</code> if your interface should not initialize optional audio feedback.</div></section>
+        <section class="detail-block"><h2>Examples and source</h2><ul><li><a href="../tv-navigation-framework/example.html">example.html</a> — interactive keyboard navigation test page</li><li><a href="../tv-navigation-framework/examples/netflix-demo.html">Netflix-style demo</a> — larger-screen sample layout</li><li><a href="../tv-navigation-framework/tv-navigation-framework.js">tv-navigation-framework.js</a> — main framework</li><li><a href="../tv-navigation-framework/tv-navigation-framework.css">tv-navigation-framework.css</a> — focus and interface styles</li><li><a href="../tv-navigation-framework/tv-navigation-themes.css">tv-navigation-themes.css</a> — theme styles</li></ul></section>
+      </article><aside class="detail-aside"><div class="aside-card"><h2>Explore add-ons</h2><nav class="detail-nav" aria-label="Add-on pages"><a href="app-menu.html">App Menu</a><a href="css-grid.html">CSS Grid</a><a href="enhanced-bootstrap-table.html">Enhanced Table</a><a href="segmented-buttons.html">Segmented Buttons</a><a aria-current="page" href="tv-navigation.html">TV Navigation</a><a href="bs-colors.html">bsColors</a><a href="bootstrap-docs.html">Bootstrap Docs CSS</a></nav><h3>Good fit for</h3><ul><li>Smart TV interfaces</li><li>Remote-driven kiosks</li><li>Keyboard-first applications</li></ul></div></aside></div>
+    </main>
+    <footer class="site-footer"><a class="brand" href="../index.html"><span class="brand-mark small">B<span>+</span></span><span>Bootstrap Addons</span></a><p>Independent add-ons for Bootstrap projects.</p><div><a href="https://github.com/cmrodican/bootstrap-addons">GitHub</a><a href="../LICENSE">GPL-2.0 License</a></div></footer>
+  </body>
+</html>
